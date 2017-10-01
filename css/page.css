@@ -1,0 +1,101 @@
+* {
+  box-sizing: content-box;
+}
+
+html, body {
+  font-family: Georgia, serif;
+  background-color: #f5f5d5;
+  font-size: 16px;
+  /*font-size: 62.5%;*/
+}
+
+.container {
+  margin: 0 auto;
+  /*background-color: #f5f5d5;*/
+  padding: 1em;
+  width: 65%;
+  min-width: 640px;
+  max-width: 960px;
+  /*border: 1px solid #333;*/
+}
+
+.header {
+  margin-top: 9px;
+  font-size: 18px;
+  line-height: 48px;
+  color: #556677;
+  height: 48px;
+  width: 100%;
+  border-bottom: 1px solid #999;
+}
+
+.header span {
+  font-weight: normal;
+  color: #556677;
+}
+
+.header {
+  color: orange;
+}
+
+.search {
+  float: right;
+  position: relative;
+  font-size: 14px;
+}
+
+.search input {
+  width: 130px;
+  height: 25px;
+  line-height: 25px;
+  border: 1px solid #999;
+  padding: 0px 10px;
+  font-size: 14px;
+  opacity: 0.7;
+  transition: 0.7s all;
+}
+
+.search:hover {
+  opacity: 1;
+  width: 150px;
+}
+
+.search i {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+.content .alpha {
+  width: 64%;
+  min-width: 470px;
+  max-width: 740px;
+  margin-left: 3%;
+  float: left;
+  /*border: 1px solid #555;*/
+  height: 100px;
+}
+
+.content .belta {
+  float: right;
+  width: 24%;
+  margin-right: 3%;
+  min-width: 180px;
+  max-width: 300px;
+  overflow: hidden;
+  height: 100px;
+  border: 1px solid #555;
+}
+
+.post-list h2 {
+  margin-top: 30px;
+  border-bottom: 1px solid #d3d3d3;
+  color: #000;
+  font-weight: normal;
+  font-size: 21px;
+  line-height: 30px;
+}
+
+.post-list .date {
+  color: rgba(0, 0, 0, .5);
+}
