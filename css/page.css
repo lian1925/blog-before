@@ -55,7 +55,7 @@ html, body {
   transition: 0.7s all;
 }
 
-.search:hover {
+.search input:hover {
   opacity: 1;
   width: 150px;
 }
@@ -63,6 +63,7 @@ html, body {
 .search i {
   position: absolute;
   right: 10px;
+  top: 0px;
   cursor: pointer;
 }
 
