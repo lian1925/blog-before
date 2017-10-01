@@ -1,3 +1,74 @@
-body{
-  background: #555;
+* {
+  margin: 0;
+}
+
+#index-bg {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: all 2s ease-in;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(" http://www.ruanyifeng.com/images_pub/pub_95.jpg ");
+}
+
+@media (min-width: 641px) and (max-width:770px) {
+  .container {
+    min-width: 70%;
+  }
+}
+
+@media (min-width: 771px) {
+  .container {
+    min-width: 40%;
+  }
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 1.5em;
+  color: #fefefe;
+  overflow: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: auto;
+  height: auto;
+  /*max-height: 80%;*/
+  /*min-width: 90%;*/
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  transition: height 1s ease;
+  transition: top 1s ease;
+}
+
+.container h1 {
+  text-align: center;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.container h1 a {
+  font-size: 21px;
+  color: #fefefe;
+  text-decoration: none;
+}
+
+.container a:hover {
+  text-decoration: underline;
+}
+
+.container h2 {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 200;
+  margin: 0;
+  line-height: 30px;
+  border-top: 1px solid #777;
+  border-bottom: 1px solid #777;
 }
