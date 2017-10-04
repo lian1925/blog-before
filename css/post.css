@@ -64,3 +64,19 @@ html, body {
 .post .page {
   font-size: 14px;
 }
+
+@media(max-width:420px) {
+  .container {
+    width: 95%;
+    padding: 0;
+    min-width: 0px;
+    overflow: hidden;
+  }
+  .header {
+    margin: 0 10px;
+    width: auto;
+  }
+  .search {
+    display: none;
+  }
+}
