@@ -29,9 +29,19 @@ html, body {
   border-bottom: 1px solid #999;
 }
 
-.header span {
+.header {
   font-weight: normal;
-  color: #556677;
+  color: inherit;
+}
+
+.header a {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.header a:hover {
+  text-decoration: none;
+  /*background-color: rgba(0, 0, 0, 0.3);*/
+  color: orange;
 }
 
 .header {
@@ -109,11 +119,12 @@ html, body {
 
 .post-cate a {
   color: orange;
+  margin-right: 5px;
   cursor: pointer;
 }
 
 .post-content {
-  margin-top: -10px;
+  margin-top: 0px;
   padding-left: 10px;
 }
 
