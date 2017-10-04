@@ -8,10 +8,10 @@
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/post.css">
   <title>
-    博客搜索功能 |
+    博客实现搜索功能 |
       小梁哥的个人网站
   </title>
-</head>
+<link rel="stylesheet" href="/css/prism-duotone-light.css" type="text/css"></head>
 
 <body>
   <div class="container">
@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="post">
-      <h1>博客搜索功能</h1>
+      <h1>博客实现搜索功能</h1>
       <div class="post-meta">
         <p>作者： Lian</p>
         <p>日期：
@@ -40,10 +40,41 @@
       <div class="share-button"></div>
     </div>
     <div class="page">
-      <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>为博客添加搜索功能<br><a id="more"></a><br>1</p>
-<h2 id="使用服务"><a href="#使用服务" class="headerlink" title="使用服务"></a>使用服务</h2><p><a href="https://www.algolia.com/getstarted#/final" target="_blank" rel="external">Algolia</a><br>账号：Github<br>2</p>
-<h2 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h2><p>第一步，我们要获取博客网站的数据，放入文件中，作为搜索功能的数据源。<br>对此我们选用的工具是：<br><a href="https://github.com/alexbruno/hexo-generator-json-content" target="_blank" rel="external">hexo-generator-json-content</a><br>安装方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i -S hexo-generator-json-content</div></pre></td></tr></table></figure></p>
-<p>配置数据源选项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">jsonContent:</div><div class="line">  meta: false</div><div class="line">  pages:false</div><div class="line">  posts:</div><div class="line">    title: true</div><div class="line">    slug: false</div><div class="line">    date: true</div><div class="line">    updated: false</div><div class="line">    comments: false</div><div class="line">    path: false</div><div class="line">    link: false</div><div class="line">    permalink: false</div><div class="line">    excerpt: false</div><div class="line">    keywords: false # but only if root keywords option language was set</div><div class="line">    text: true</div><div class="line">    raw: false</div><div class="line">    content: true</div><div class="line">    categories: true</div><div class="line">    tags: true</div></pre></td></tr></table></figure></p>
+      <p>目标：为博客添加搜索功能，方便用户快速查找对应的文章。<br><a id="more"></a><br>实现搜索功能，有两种途径：1）使用第三方搜索公司提供的服务；2）通过自己获取网站数据和关键字匹配，实现搜索功能</p>
+<h2 id="第三方服务"><a href="#第三方服务" class="headerlink" title="第三方服务"></a>第三方服务</h2><p><a href="https://www.algolia.com/getstarted#/final" target="_blank" rel="external">Algolia</a><br>可采用Github账号登录使用</p>
+<h2 id="自定义搜索功能"><a href="#自定义搜索功能" class="headerlink" title="自定义搜索功能"></a>自定义搜索功能</h2><p>第一步，我们要获取博客网站的数据，放入文件中，作为搜索功能的数据源。<br>对此我们选用的工具是：<br><a href="https://github.com/alexbruno/hexo-generator-json-content" target="_blank" rel="external">hexo-generator-json-content</a><br>安装方式：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">npm</span> i -S hexo-generator-json-content
+</code></pre>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>在博客配置 <code>_config.yml</code>,添加上面插件的配置语句：</p>
+<pre class=" language-yml"><code class="language-yml">jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: true
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: false
+</code></pre>
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><pre class=" language-bash"><code class="language-bash">  hexo serve
+</code></pre>
+<p>  将自动生成 content.json文件，格式如下：</p>
+<pre class=" language-yml"><code class="language-yml">  [{ //-> only published posts
+  title: post.title,
+  date: post.date,
+  text: post.content, //-> only text minified ;)
+  path: post.path
+}]
+</code></pre>
 
     </div>
 
