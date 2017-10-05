@@ -137,4 +137,16 @@ html, body {
   .search {
     display: none;
   }
+  .post-nav {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .post-nav .prev {
+    max-width: 45%;
+    text-align: center;
+  }
+  .post-nav .next {
+    max-width: 45%;
+    text-align: center;
+  }
 }
