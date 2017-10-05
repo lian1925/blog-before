@@ -16,6 +16,7 @@ html, body {
   width: 65%;
   min-width: 640px;
   max-width: 960px;
+  /*position: relative;*/
   /*border: 1px solid #333;*/
 }
 
@@ -84,7 +85,7 @@ html, body {
   margin-left: 3%;
   float: left;
   /*border: 1px solid #555;*/
-  height: 100px;
+  height: auto;
 }
 
 .content .belta {
@@ -197,6 +198,38 @@ html, body {
   height: auto;
   z-index: 100px;
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+/*.alpha:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.belta:after {
+  content: '';
+  display: block;
+  clear: both;
+}*/
+
+.content:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.footer {
+  clear: both;
+  text-align: center;
+  margin-top: 70px;
+  line-height: 70px;
+  border-top: 1px solid rgba(0, 0, 0, 0.25);
+  width: 100%;
+}
+
+.footer a {
+  color: orange;
+  padding: 0 10px;
 }
 
 @media(max-width:420px) {
