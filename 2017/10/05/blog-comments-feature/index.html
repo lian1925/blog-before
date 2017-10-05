@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="icon" type="image/png" href="/img/robot.png">
+  <link rel="stylesheet" href="/css/post.css?v=1.1">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_407924_kx6yx3r9q4m6xbt9.css">
+  <title>
+    博客添加评论功能 |
+      小梁哥的个人网站
+  </title>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
+
+<body>
+  <div class="container">
+    <div class="header">
+
+      <a class="home-title" style="cursor:default;" onclick="javascript:void(0);return false;"><span>小梁哥的个人网站
+        <i class="iconfont icon-shuangjiantou-copy"></i>
+      </span></a>
+
+      <a href="/home/">首页</a>
+      <span><i class="iconfont icon-shuangjiantou-copy"></i></span>
+      <a href="/tags/博客/">
+        博客
+      </a>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <i class="iconfont icon-sousuo"></i>
+      </div>
+    </div>
+    <div class="post">
+      <h1>博客添加评论功能</h1>
+      <div class="post-meta">
+        <p>作者： Lian</p>
+        <p>日期：
+          2017年10月05日 19:10
+        </p>
+      </div>
+      <div class="share-button"></div>
+    </div>
+    <div class="page">
+      <p>目标：为博客添加评论功能，方便访客留言。<br><a id="more"></a></p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p><a href="http://changyan.kuaizhan.com/" target="_blank" rel="external">畅言</a>，使用微信账号登录。</p>
+<h2 id="备案"><a href="#备案" class="headerlink" title="备案"></a>备案</h2><p>使用畅言评论，需要对域名进行备案。故于阿里云新买域名www.liangyl.top，进行绑定</p>
+<h2 id="企业邮箱"><a href="#企业邮箱" class="headerlink" title="企业邮箱"></a>企业邮箱</h2><p>腾讯免费企业邮箱，使用微信登录</p>
+<h2 id="在页面的合适位置引入评论代码"><a href="#在页面的合适位置引入评论代码" class="headerlink" title="在页面的合适位置引入评论代码"></a>在页面的合适位置引入评论代码</h2><p>此处需要填写id和key，在畅言的管理后台获取。</p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"SOHUCS"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+<span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">var</span> appid <span class="token operator">=</span> <span class="token string">'您的appid'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> conf <span class="token operator">=</span> <span class="token string">'您的appkey'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> width <span class="token operator">=</span> window<span class="token punctuation">.</span>innerWidth <span class="token operator">||</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>clientWidth<span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>width <span class="token operator">&lt;</span> <span class="token number">960</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+window<span class="token punctuation">.</span>document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">'&lt;script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id='</span> <span class="token operator">+</span> appid <span class="token operator">+</span> <span class="token string">'&amp;conf='</span> <span class="token operator">+</span> conf <span class="token operator">+</span> <span class="token string">'">&lt;\/script>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span> <span class="token keyword">var</span> loadJs<span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span>a<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">var</span> c<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"head"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">||</span>document<span class="token punctuation">.</span>head<span class="token operator">||</span>document<span class="token punctuation">.</span>documentElement<span class="token punctuation">;</span><span class="token keyword">var</span> b<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"script"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>b<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"type"</span><span class="token punctuation">,</span><span class="token string">"text/javascript"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>b<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"charset"</span><span class="token punctuation">,</span><span class="token string">"UTF-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>b<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"src"</span><span class="token punctuation">,</span>d<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> a<span class="token operator">===</span><span class="token string">"function"</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">if</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>attachEvent<span class="token punctuation">)</span><span class="token punctuation">{</span>b<span class="token punctuation">.</span>onreadystatechange<span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">var</span> e<span class="token operator">=</span>b<span class="token punctuation">.</span>readyState<span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span>e<span class="token operator">===</span><span class="token string">"loaded"</span><span class="token operator">||</span>e<span class="token operator">===</span><span class="token string">"complete"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>b<span class="token punctuation">.</span>onreadystatechange<span class="token operator">=</span><span class="token keyword">null</span><span class="token punctuation">;</span><span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>b<span class="token punctuation">.</span>onload<span class="token operator">=</span>a<span class="token punctuation">}</span><span class="token punctuation">}</span>c<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token function">loadJs</span><span class="token punctuation">(</span><span class="token string">"http://changyan.sohu.com/upload/changyan.js"</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>window<span class="token punctuation">.</span>changyan<span class="token punctuation">.</span>api<span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token punctuation">{</span>appid<span class="token punctuation">:</span>appid<span class="token punctuation">,</span>conf<span class="token punctuation">:</span>conf<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+</code></pre>
+
+    </div>
+    <h2 class="post-nav">
+      
+      <a href="/2017/10/05/blog-icon-style/" class="prev">上一篇：博客添加图标样式</a>
+      
+      <a href="#" class="next">下一篇：无</a>
+
+    </h2>
+
+    <div class="footer">
+      Copyright @ <a href="/">lian</a> | 2009-2017
+    </div>
+  </div>
+
+</body>
+
+</html>
+
