@@ -11,7 +11,7 @@
     博客实现搜索功能 |
       小梁哥的个人网站
   </title>
-<link rel="stylesheet" href="/css/prism-duotone-light.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
 
 <body>
   <div class="container">
@@ -75,8 +75,64 @@
   path: post.path
 }]
 </code></pre>
+<p>第二步，通过关键字，获取数据源中的匹配文章。这里我们将提供一个搜索函数<code>search()</code>，传入关键字，返回相匹配的文章列表。</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">search</span><span class="token punctuation">(</span>keywords<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 关键字 => 正则，空格隔开的看作多个关键字</span>
+    <span class="token comment" spellcheck="true">// a b c => /a|b|c/gmi</span>
+    <span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> regExp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex">/[ ]/g</span><span class="token punctuation">,</span> <span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'gmi'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">loadData</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">{</span>
+      result <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>post<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">matcher</span><span class="token punctuation">(</span>post<span class="token punctuation">,</span>regExp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>定义数据源读取函数<code>loadData()</code></p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> searchData<span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">loadData</span><span class="token punctuation">(</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>searchData<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'/content.json'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        xhr<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">>=</span> <span class="token number">200</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">&lt;</span> <span class="token number">300</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">var</span> res <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>response <span class="token operator">||</span> <span class="token keyword">this</span><span class="token punctuation">.</span>responseText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                searchData <span class="token operator">=</span> res <span class="token keyword">instanceof</span> <span class="token class-name">Array</span> <span class="token operator">?</span> res <span class="token punctuation">:</span> res<span class="token punctuation">.</span>posts<span class="token punctuation">;</span>
+                <span class="token function">success</span><span class="token punctuation">(</span>searchData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>statusText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        xhr<span class="token punctuation">.</span>onerror <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>statusText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token function">success</span><span class="token punctuation">(</span>searchData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>定义正则匹配函数</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">matcher</span><span class="token punctuation">(</span>post<span class="token punctuation">,</span> regExp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 匹配优先级：title > tags > text</span>
+    <span class="token keyword">return</span> <span class="token function">regtest</span><span class="token punctuation">(</span>post<span class="token punctuation">.</span>title<span class="token punctuation">,</span> regExp<span class="token punctuation">)</span> <span class="token operator">||</span> post<span class="token punctuation">.</span>tags<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>tag<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">regtest</span><span class="token punctuation">(</span>tag<span class="token punctuation">.</span>name<span class="token punctuation">,</span> regExp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token function">regtest</span><span class="token punctuation">(</span>post<span class="token punctuation">.</span>text<span class="token punctuation">,</span> regExp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">regtest</span><span class="token punctuation">(</span>raw<span class="token punctuation">,</span> regExp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    regExp<span class="token punctuation">.</span>lastIndex <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> regExp<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>raw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
 
     </div>
+    <h2 class="post-nav">
+      
+      <a href="/2017/09/22/gallery/" class="prev">上一篇：gallery</a>
+      
+      <a href="/2017/10/03/web-storage/" class="next">下一篇：网络存储</a>
+
+    </h2>
 
   </div>
 

@@ -65,6 +65,22 @@ html, body {
   font-size: 14px;
 }
 
+.post-nav {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.5);
+  margin: 50px 20px;
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+}
+
+.post-nav .prev {
+  float: left;
+}
+
+.post-nav .next {
+  float: right;
+}
+
 @media(max-width:420px) {
   .container {
     width: 95%;

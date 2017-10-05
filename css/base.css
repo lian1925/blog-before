@@ -99,6 +99,14 @@ pre {
   border-radius: 10px;
 }
 
+.page p {
+  line-height: 25px;
+}
+
+ul li {
+  line-height: 25px;
+}
+
 /* Text-level semantics
    ========================================================================== */
 
