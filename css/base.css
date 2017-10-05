@@ -103,6 +103,10 @@ pre {
   line-height: 25px;
 }
 
+.page p>a {
+  color: blue;
+}
+
 ul li {
   line-height: 25px;
 }
