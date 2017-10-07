@@ -127,6 +127,7 @@ html, body {
 .post-content {
   margin-top: 0px;
   padding-left: 10px;
+  line-height: 20px;
 }
 
 .read-more {
@@ -229,7 +230,6 @@ html, body {
 
 .footer a {
   color: orange;
-  padding: 0 10px;
 }
 
 @media(max-width:420px) {
