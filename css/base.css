@@ -107,6 +107,11 @@ pre {
   color: blue;
 }
 
+.page p>img {
+  border-radius: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+}
+
 ul li {
   line-height: 25px;
 }
