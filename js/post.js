@@ -5,6 +5,6 @@
 // $('.page p img').wrap('<a data-fancybox="gallery" href="' + $(this).attr('src') + '")></a>')
 $('.page p img').each(function() {
   var src = $(this).attr('src');
-  var content = '<a data-fancybox="gallery" href="' + src + '")></a>';
+  var content = '<a data-fancybox="image" href="' + src + '")></a>';
   $(this).wrap('' + content + ')></a>')
 })
