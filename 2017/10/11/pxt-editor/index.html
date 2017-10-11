@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="icon" type="image/png" href="/img/robot.png">
+  <link rel="stylesheet" href="/css/post.css?v=1.1">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_407924_kx6yx3r9q4m6xbt9.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />
+
+  <title>
+    JavaScript编辑器特性 | PXT |
+      小梁哥的个人网站
+  </title>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
+
+<body>
+  <div class="container">
+    <div class="header">
+
+      <a class="home-title" style="cursor:default;" onclick="javascript:void(0);return false;"><span>小梁哥的个人网站
+        <i class="iconfont icon-shuangjiantou-copy"></i>
+      </span></a>
+
+      <a href="/home/">首页</a>
+      <span><i class="iconfont icon-shuangjiantou-copy"></i></span>
+      <a href="/tags/PXT/">
+        PXT
+      </a>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <i class="iconfont icon-sousuo"></i>
+      </div>
+    </div>
+    <div class="post">
+      <h1>JavaScript编辑器特性 | PXT</h1>
+      <div class="post-meta">
+        <p>作者： Lian</p>
+        <p>日期：
+          2017年10月11日 17:10
+        </p>
+      </div>
+      <div class="share-button"></div>
+    </div>
+    <div class="page">
+      <h1 id="Features-of-the-JavaScript-Editor"><a href="#Features-of-the-JavaScript-Editor" class="headerlink" title="Features of the JavaScript Editor"></a>Features of the JavaScript Editor</h1><p>The JavaScript editor extends the features and functionality of the <a href="https://github.com/Microsoft/monaco-editor" target="_blank" rel="external">Monaco Editor</a>, the editor that powers Visual Studio Code.<br><a id="more"></a><br>Here is a list of some of the features supported by the Editor:</p>
+<h3 id="Editing"><a href="#Editing" class="headerlink" title="Editing"></a>Editing</h3><p>The Editor contains a built-in JavaScript/Typescript language service that provides complete code intelligence.</p>
+<h3 id="Coloring"><a href="#Coloring" class="headerlink" title="Coloring"></a>Coloring</h3><p>The Editor automatically colors each of function and its respective namespace to match the colors of the respective block in the Block Editor.</p>
+<p><img src="/static/images/monaco-coloring.png" alt=""></p>
+<p>This is the equivalent of the following blocks:</p>
+<p><img src="/static/images/monaco-coloring-blocks.png" alt=""></p>
+<h3 id="Auto-Suggest"><a href="#Auto-Suggest" class="headerlink" title="Auto Suggest"></a>Auto Suggest</h3><p>Also known as IntelliSense, the editor supports automatic word completion.</p>
+<p>If the language service knows possible completions, the IntelliSense suggestions will pop up as you type. You can always manually trigger it with <code>Ctrl and Space</code>.  </p>
+<p><img src="/static/images/monaco-auto-suggest.png" alt=""></p>
+<p>You can get additional information if you click the <strong>‘i’</strong> symbol in the current suggestion.</p>
+<p><img src="/static/images/monaco-auto-suggest-info.png" alt=""></p>
+<h3 id="Auto-completion"><a href="#Auto-completion" class="headerlink" title="Auto completion"></a>Auto completion</h3><p>Pressing <code>Enter</code> to any of the functions suggested by IntelliSense will automatically insert a snippet of the function declaration prefilling default values for each of the function parameters.</p>
+<p>The default value is populated in one of the following ways:</p>
+<ul>
+<li>The default value in a @param JSdoc in the function declaration.</li>
+<li>Default values for primitive types. <code>number: 0</code>, <code>string: &quot;&quot;</code>, <code>boolean: false</code></li>
+<li>If a parameter is an Enum, the first value of the Enum is inserted</li>
+</ul>
+<h3 id="Parameter-Hints"><a href="#Parameter-Hints" class="headerlink" title="Parameter Hints"></a>Parameter Hints</h3><p>Parameter hints will pop up as you’re typing a function invocation.</p>
+<p><img src="/static/images/monaco-parameter-hints.png" alt=""></p>
+<h3 id="Quick-Info"><a href="#Quick-Info" class="headerlink" title="Quick Info"></a>Quick Info</h3><p>Hovering over namespaces, functions and function parameters will show useful information describing the purposes of the function, namespace, or parameter.</p>
+<p><img src="/static/images/monaco-quick-info.png" alt=""></p>
+<h3 id="Bracket-Matching"><a href="#Bracket-Matching" class="headerlink" title="Bracket Matching"></a>Bracket Matching</h3><p>Matching brackets are highlighted as soon as the cursor is near one of them.</p>
+<p><img src="/static/images/monaco-bracket-matching.png" alt=""></p>
+<p><code>Tip: You can jump to the matching bracket with Ctrl and Shift and \</code></p>
+<h3 id="Errors"><a href="#Errors" class="headerlink" title="Errors"></a>Errors</h3><p>The Editor’s language service is constantly analyzing your code for errors in the background.<br>Errors are surfaced to the user in one of two different ways:</p>
+<ul>
+<li>Red squiggly or wavy lines appear beneath your code that is incorrect</li>
+<li>An Error bar snaps to the first error in the list</li>
+</ul>
+<p><img src="/static/images/monaco-errors.png" alt=""></p>
+<h3 id="Zoom"><a href="#Zoom" class="headerlink" title="Zoom"></a>Zoom</h3><p>You can change the editor’s font size by zooming in or out the editor content.<br>Use <code>Ctrl and +</code> and <code>Ctrl and -</code> to zoom in/out.</p>
+<h3 id="Find-and-Replace"><a href="#Find-and-Replace" class="headerlink" title="Find and Replace"></a>Find and Replace</h3><p>The Editor supports Find, as well as Find and Replace in order to search for a particular keyword, or search and replace a particular keyword.<br>You can get to the Find and Replace widget with <code>Ctrl and f</code>, or you can also get to it via the All Commands window (see below).</p>
+<p><img src="/static/images/monaco-find-replace.png" alt=""></p>
+<h3 id="Context-Menu"><a href="#Context-Menu" class="headerlink" title="Context Menu"></a>Context Menu</h3><p>Right clicking anywhere within the editor will bring up the context menu.<br>The context menu will show you quick actions that you can complete by clicking one of the buttons that appear in the context menu.</p>
+<p>Here are some of the actions currently supported:</p>
+<ul>
+<li>Format Code: Quickly formats the document code</li>
+<li>Show Commands: Opens up the All Commands view</li>
+<li>Save: Saves the document</li>
+<li>Run Simulator: Runs the simulator</li>
+</ul>
+<p><img src="/static/images/monaco-context-menu.png" alt=""></p>
+<h3 id="All-Commands"><a href="#All-Commands" class="headerlink" title="All Commands"></a>All Commands</h3><p>The All Commands view allows the user to search through all the commands available in the editor.<br>To get to the all commands view press <code>F1</code>, or right click to bring up the context menu, then click <code>Show Commands</code>.</p>
+<p><img src="/static/images/monaco-all-commands.png" alt=""></p>
+<h3 id="Language-Support"><a href="#Language-Support" class="headerlink" title="Language Support"></a>Language Support</h3><p>The Monaco editor is also used for displaying other languages, including JSON, Cpp, Text and Assembly files.</p>
+<p><img src="/static/images/monaco-other-languages.png" alt=""></p>
+
+    </div>
+    <h2 class="post-nav">
+      
+      <a href="/2017/10/11/pxt-makecode-about/" class="prev">上一篇：关于 | PXT</a>
+      
+      <a href="/2017/10/11/pxt-async/" class="next">下一篇：异步 | PXT</a>
+
+    </h2>
+
+    <div class="footer">
+      Copyright @ <a href="/">lian</a> | 2009-2017
+    </div>
+  </div>
+
+  <script src="/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+  <script src="/js/post.js"></script>
+
+
+</body>
+
+</html>
+

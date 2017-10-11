@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="icon" type="image/png" href="/img/robot.png">
+  <link rel="stylesheet" href="/css/post.css?v=1.1">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_407924_kx6yx3r9q4m6xbt9.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />
+
+  <title>
+    package起步 | PXT |
+      小梁哥的个人网站
+  </title>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
+
+<body>
+  <div class="container">
+    <div class="header">
+
+      <a class="home-title" style="cursor:default;" onclick="javascript:void(0);return false;"><span>小梁哥的个人网站
+        <i class="iconfont icon-shuangjiantou-copy"></i>
+      </span></a>
+
+      <a href="/home/">首页</a>
+      <span><i class="iconfont icon-shuangjiantou-copy"></i></span>
+      <a href="/tags/PXT/">
+        PXT
+      </a>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <i class="iconfont icon-sousuo"></i>
+      </div>
+    </div>
+    <div class="post">
+      <h1>package起步 | PXT</h1>
+      <div class="post-meta">
+        <p>作者： Lian</p>
+        <p>日期：
+          2017年10月11日 21:10
+        </p>
+      </div>
+      <div class="share-button"></div>
+    </div>
+    <div class="page">
+      <h2 id="Building-your-own-package"><a href="#Building-your-own-package" class="headerlink" title="Building your own package"></a>Building your own package</h2><h3 id="Step-0-Local-server-setup"><a href="#Step-0-Local-server-setup" class="headerlink" title="Step 0: Local server setup"></a>Step 0: Local server setup</h3><p>In order to build and test your package locally, you need to setup PXT to run locally.<br>Follow the <a href="/cli#setting-up-workspace">instructions on setting up workspace</a>.</p>
+<h3 id="Step-1-GitHub-setup"><a href="#Step-1-GitHub-setup" class="headerlink" title="Step 1: GitHub setup"></a>Step 1: GitHub setup</h3><p>You will need to get a <a href="https://github.com" target="_blank" rel="external">GitHub</a> account and create a GitHub repository. At this time, other repository hosting solutions (GitLab, Bitbucket, etc.) are not supported.</p>
+<p>Let’s say you want to create a package called <code>banana</code> for target <code>TARGET</code>.</p>
+<ul>
+<li>create (do not clone) a fresh GitHub repository <code>pxt-banana</code></li>
+<li>clone this repository into <code>pxt-banana</code> under the <code>projects</code> folder</li>
+<li>go to the cloned folder and run <code>pxt init</code>; follow the prompts</li>
+<li>edit <code>pxt.json</code> and <code>README.md</code> with the right descriptions</li>
+<li>commit files to git: <code>git add .</code>, and commit them: <code>git commit -m &quot;Initial&quot;</code></li>
+</ul>
+<blockquote>
+<p><strong>Make sure you keep the line <code>for PXT/TARGET</code> (where <code>TARGET</code> is the target id) in <code>README.md</code>. Otherwise the package will not show up in search.</strong></p>
+</blockquote>
+<h3 id="Step-2-Developing-package"><a href="#Step-2-Developing-package" class="headerlink" title="Step 2: Developing package"></a>Step 2: Developing package</h3><p>Now, you’re ready to develop your package. You can do it with <a href="https://code.visualstudio.com/" target="_blank" rel="external">VSCode</a><br>or from the web editor served from <code>pxt serve</code>.</p>
+<ul>
+<li>put the contents of your package in <code>main.ts</code></li>
+<li>add a sample program using the package in <code>test.ts</code></li>
+<li>use <code>pxt</code> to build and deploy the package with tests; use the web editor to test in the simulator</li>
+</ul>
+<p>You will develop your package in <code>pxt-banana</code>, and then test this work by creating a second project (called, perhaps, “Just Look At It”) which includes a reference to <code>pxt-banana</code>.</p>
+<h3 id="hint"><a href="#hint" class="headerlink" title="~ hint"></a>~ hint</h3><p>If the local editor fails to open, copy the URL printed in the console and open it in your favorite browser.</p>
+<p>The local server requires a security token embedded in the URL to serve pages.</p>
+<h3 id=""><a href="#" class="headerlink" title="~"></a>~</h3><h3 id="Step-3-Testing"><a href="#Step-3-Testing" class="headerlink" title="Step 3: Testing"></a>Step 3: Testing</h3><p>In order to test your package, you need to create a new project, and manually add a reference back to the package you’ve been developing.</p>
+<ul>
+<li>Open the local editor and create a new project. For example, you might call it <em>Just Look At It</em>.</li>
+<li>Open the project settings by clicking the gear (Gear -&gt; <code>Project Settings</code>)</li>
+<li>Click on <code>Edit Settings As Text</code></li>
+<li>Add an entry under <code>dependencies</code> that points to your package folder:</li>
+</ul>
+<pre><code>{
+    &quot;name&quot;: &quot;banana test&quot;,
+    &quot;dependencies&quot;: {
+        ...
+        &quot;banana&quot;: &quot;file:../pxt-banana&quot;
+    },
+    ...
+}
+</code></pre><ul>
+<li>Reload the editor and the new blocks you developed in <code>pxt-banana</code> will be loaded into the project “Just Look At It.”</li>
+</ul>
+<h3 id="Step-4-Publishing-your-package"><a href="#Step-4-Publishing-your-package" class="headerlink" title="Step 4: Publishing your package"></a>Step 4: Publishing your package</h3><p>When you’re happy with the first version of your package, commit the changes and<br>bump the version and push to github:</p>
+<pre><code>git commit -a -m &quot;Amazing flying bananas&quot;
+pxt bump
+</code></pre><p>The <code>pxt bump</code> will make sure there are no uncommited changes, bump the version number,<br>create a git tag, and push everything to github.</p>
+<p>In the editor, paste the full URL to your repo after selecting <code>More -&gt; Add package...</code>. Your package should show up.</p>
+<h3 id="Step-5-Approval"><a href="#Step-5-Approval" class="headerlink" title="Step 5: Approval"></a>Step 5: Approval</h3><p>In order to be searchable by users, packages need to be approved. GitHub organizations or individual repos can be approved.</p>
+<p>See <a href="/packages/approval">approval</a> for more details.</p>
+<h3 id="hint-1"><a href="#hint-1" class="headerlink" title="~ hint"></a>~ hint</h3><p><strong>Make sure you keep the line <code>for PXT/TARGET</code> (where <code>TARGET</code> is the target platform id)<br>in <code>README.md</code>. Otherwise the package will not show up in search.</strong></p>
+<h3 id="-1"><a href="#-1" class="headerlink" title="~"></a>~</h3><p>Read more an <a href="https://makecode.com/defining-blocks" target="_blank" rel="external">defining-blocks</a> to learn how to surface your APIs into blocks and JavaScript.</p>
+<h3 id="Icon"><a href="#Icon" class="headerlink" title="Icon"></a>Icon</h3><p>The editor will automatically use any <code>icon.png</code> file when displaying the package in the editor. <strong>This feature only works for approved packages.</strong></p>
+<p>The icon should be sized with a 16:9 ratio and of at least <code>184</code> pixel wide.</p>
+
+    </div>
+    <h2 class="post-nav">
+      
+      <a href="/2017/10/11/pxt-theme/" class="prev">上一篇：主题 | PXT</a>
+      
+      <a href="/2017/10/11/pxt-package-pxtjson/" class="next">下一篇：配置package | PXT</a>
+
+    </h2>
+
+    <div class="footer">
+      Copyright @ <a href="/">lian</a> | 2009-2017
+    </div>
+  </div>
+
+  <script src="/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+  <script src="/js/post.js"></script>
+
+
+</body>
+
+</html>
+

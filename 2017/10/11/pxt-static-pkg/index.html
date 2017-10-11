@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="icon" type="image/png" href="/img/robot.png">
+  <link rel="stylesheet" href="/css/post.css?v=1.1">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_407924_kx6yx3r9q4m6xbt9.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />
+
+  <title>
+    静态HTML | PXT |
+      小梁哥的个人网站
+  </title>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
+
+<body>
+  <div class="container">
+    <div class="header">
+
+      <a class="home-title" style="cursor:default;" onclick="javascript:void(0);return false;"><span>小梁哥的个人网站
+        <i class="iconfont icon-shuangjiantou-copy"></i>
+      </span></a>
+
+      <a href="/home/">首页</a>
+      <span><i class="iconfont icon-shuangjiantou-copy"></i></span>
+      <a href="/tags/PXT/">
+        PXT
+      </a>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <i class="iconfont icon-sousuo"></i>
+      </div>
+    </div>
+    <div class="post">
+      <h1>静态HTML | PXT</h1>
+      <div class="post-meta">
+        <p>作者： Lian</p>
+        <p>日期：
+          2017年10月11日 20:10
+        </p>
+      </div>
+      <div class="share-button"></div>
+    </div>
+    <div class="page">
+      <h1 id="pxt-staticpkg-Manual-Page"><a href="#pxt-staticpkg-Manual-Page" class="headerlink" title="pxt-staticpkg Manual Page"></a>pxt-staticpkg Manual Page</h1><h3 id="description-Compiles-PXT-editor-into-static-HTML-files"><a href="#description-Compiles-PXT-editor-into-static-HTML-files" class="headerlink" title="@description Compiles PXT editor into static HTML files"></a>@description Compiles PXT editor into static HTML files</h3><p>Packages the target into static HTML pages</p>
+<pre><code>pxt staticpkg [--route route] [--githubpages] [--output output]
+</code></pre><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Compiles the PXT editor into static HTML files that can be served without a server or integrated into an app. The resulting files are placed in <code>built/packaged</code>.</p>
+<h2 id="Flags"><a href="#Flags" class="headerlink" title="Flags:"></a>Flags:</h2><h3 id="route-optional"><a href="#route-optional" class="headerlink" title="route  (optional)"></a>route <value> (optional)</value></h3><p>Routing path. If missing, defaults to <code>local</code>. The route will be injected into the all the paths in the application.</p>
+<h3 id="githubpages-optional"><a href="#githubpages-optional" class="headerlink" title="githubpages (optional)"></a>githubpages (optional)</h3><p>Generate a web site compatiable with GitHub pages.</p>
+<h3 id="output-optional"><a href="#output-optional" class="headerlink" title="output (optional)"></a>output (optional)</h3><p>Directory for generated files.</p>
+<h3 id="bump-option"><a href="#bump-option" class="headerlink" title="bump (option)"></a>bump (option)</h3><p>Bump version number generating pages</p>
+<h3 id="hint"><a href="#hint" class="headerlink" title="~ hint"></a>~ hint</h3><p>This directory is cleaned before starting the process.</p>
+<h3 id=""><a href="#" class="headerlink" title="~"></a>~</h3><h2 id="Deploying-PXT-with-static-files"><a href="#Deploying-PXT-with-static-files" class="headerlink" title="Deploying PXT with static files"></a>Deploying PXT with static files</h2><p>Running <code>pxt staticpkg</code> will create a number of files under <code>built/packaged</code>.<br>You can use <code>pxt serve -pkg</code> or any other any web server. For example, you can use <a href="https://www.npmjs.com/package/http-server" target="_blank" rel="external">http-server</a> for easy testing.</p>
+<pre><code>npm install -g http-server
+http-server -c-1 built/packaged
+</code></pre><p>You can also run <code>pxt staticpkg --route foo</code>, which will create files under <code>built/packaged/foo</code><br>that assume they sit under <code>/foo/</code> on the web server. If you do not specify anything,<br>the files assume they sit right under <code>/</code>. To test it, run <code>pxt serve -pkg</code> and head to<br><code>http://localhost:3232/foo/index.html</code>.</p>
+<h2 id="GitHub-Pages-support"><a href="#GitHub-Pages-support" class="headerlink" title="GitHub Pages support"></a><a href="https://pages.github.com/" target="_blank" rel="external">GitHub Pages</a> support</h2><p>GitHub provides you with free hosting for your project files.</p>
+<p>If you wish to publish your web site to GitHub pages, simply add <code>--githubpages</code> to the command.</p>
+<p>This will:</p>
+<ul>
+<li>create a fresh checkout in <code>built/gh-pages</code> if needed</li>
+<li>implicityly run <code>pxt staticpkg --route repo-name</code></li>
+<li>copy files from <code>built/packaged/repo-name</code> to <code>built/gh-pages</code></li>
+<li>add files to git, commit, and push</li>
+</ul>
+<p>You can then head to <code>https://your-username.github.io/repo-name/</code>.</p>
+
+    </div>
+    <h2 class="post-nav">
+      
+      <a href="/2017/10/11/pxt-shim/" class="prev">上一篇：SHIM | PXT</a>
+      
+      <a href="/2017/10/11/pxt-serial/" class="next">下一篇：舵机串口 | PXT</a>
+
+    </h2>
+
+    <div class="footer">
+      Copyright @ <a href="/">lian</a> | 2009-2017
+    </div>
+  </div>
+
+  <script src="/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+  <script src="/js/post.js"></script>
+
+
+</body>
+
+</html>
+

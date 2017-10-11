@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="icon" type="image/png" href="/img/robot.png">
+  <link rel="stylesheet" href="/css/post.css?v=1.1">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_407924_kx6yx3r9q4m6xbt9.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />
+
+  <title>
+    编译 | PXT |
+      小梁哥的个人网站
+  </title>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
+
+<body>
+  <div class="container">
+    <div class="header">
+
+      <a class="home-title" style="cursor:default;" onclick="javascript:void(0);return false;"><span>小梁哥的个人网站
+        <i class="iconfont icon-shuangjiantou-copy"></i>
+      </span></a>
+
+      <a href="/home/">首页</a>
+      <span><i class="iconfont icon-shuangjiantou-copy"></i></span>
+      <a href="/tags/PXT/">
+        PXT
+      </a>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <i class="iconfont icon-sousuo"></i>
+      </div>
+    </div>
+    <div class="post">
+      <h1>编译 | PXT</h1>
+      <div class="post-meta">
+        <p>作者： Lian</p>
+        <p>日期：
+          2017年10月11日 18:10
+        </p>
+      </div>
+      <div class="share-button"></div>
+    </div>
+    <div class="page">
+      <h1 id="Target-Creation"><a href="#Target-Creation" class="headerlink" title="Target Creation"></a>Target Creation</h1><p>PXT can be customized to create your own <strong>target</strong>, with your own set of APIs and runtime,<br>supported by Block-based and JavaScript editing. Examples of targets are:</p>
+<ul>
+<li><a href="https://makecode.microbit.org" target="_blank" rel="external">https://makecode.microbit.org</a> (sources at <a href="https://github.com/microsoft/pxt-microbit" target="_blank" rel="external">https://github.com/microsoft/pxt-microbit</a>)</li>
+<li><a href="http://microsoft.github.io/pxt-sample/" target="_blank" rel="external">http://microsoft.github.io/pxt-sample/</a> (sources at <a href="https://github.com/microsoft/pxt-sample" target="_blank" rel="external">https://github.com/microsoft/pxt-sample</a>)</li>
+</ul>
+<p>We assume that the reader is familiar with Node.JS, NPM, JavaScript and/or C++. If you haven’t done so yet,<br>install Node.JS and the <strong>PXT</strong> command line</p>
+<pre><code>npm install -g pxt
+</code></pre><ul>
+<li>Get a copy of the <a href="https://github.com/microsoft/pxt-sample" target="_blank" rel="external">sample target sources</a> and open it in your favorite editor.</li>
+<li>Open a command prompt in the target folder and run these commands to setup the tools.</li>
+</ul>
+<pre><code>npm install
+</code></pre><p>At this point, pick an identifier for your target. Use only alphabetic characters as it will be used in various routing operations.</p>
+<h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><p>A target occupies a directory with a <a href="/targets/pxtarget">pxtarget.json</a> file and the following folders:</p>
+<ul>
+<li><code>/libs</code>, packages (sometimes referred to as libraries) that define the APIs (in C++, Static TypeScript or Thumb assembler) and how they should be exposed in blocks</li>
+<li><code>/sim</code>, TypeScript source for the in-browser <a href="/targets/simulator">simulator</a>, if any</li>
+<li><code>/docs</code>, markdown documentation pages</li>
+</ul>
+<h3 id="Updating-pxtarget-json"><a href="#Updating-pxtarget-json" class="headerlink" title="Updating pxtarget.json"></a>Updating <code>pxtarget.json</code></h3><p>如：<br>{<br>  id: “ID:utseb”,<br>  name: “名称：utseb”,<br>  title: “标题：utseb”<br>}<br>The <a href="/targets/pxtarget">pxtarget.json</a> file contains the configuration options of your target.<br>For now, update the <code>id</code>, <code>name</code> and <code>title</code> fields to reflect your target information.</p>
+<ul>
+<li>Tip: keep searching and replacing all instances of <code>sample</code> in <code>pxtarget.json</code>.</li>
+</ul>
+<h3 id="Updating-package-json"><a href="#Updating-package-json" class="headerlink" title="Updating package.json"></a>Updating <code>package.json</code></h3><p>Your target will eventually have to be published to NPM,<br>so go ahead and update the <code>package.json</code> file with your target id,<br>repositories locations, etc.</p>
+<ul>
+<li>it might be a good time to check that your target id is available in NPM as well.</li>
+</ul>
+<h3 id="Updating-assets"><a href="#Updating-assets" class="headerlink" title="Updating assets"></a>Updating assets</h3><p>Graphical assets are located under <code>/docs/static</code>.</p>
+<ul>
+<li><strong>avatar.svg</strong> image used in talking heads</li>
+<li><strong>loader.svg</strong> image used in loading overlay</li>
+</ul>
+<h3 id="Updating-the-core-package"><a href="#Updating-the-core-package" class="headerlink" title="Updating the core package"></a>Updating the <code>core</code> package</h3><p>The <code>libs/core</code> package of <em>pxt-sample</em> defines a <em>minimal</em> package structure.</p>
+<p>In fact,  the APIs of <em>pxt-sample</em> live in the <code>sim/api.ts</code> (annotated to expose<br><a href="/defining-blocks">TypeScript functions as blocks</a>), as this target is only<br>for the web. The PXT compiler generates<br>the file <code>libs/core/sim.d.ts</code> from the simulator code.  </p>
+<p>See <a href="/packages">creating a PXT package</a><br>for more information on authoring packages, which includes code<br>in the package itself.<br>For now, you can try adding a new API to one of the existing namespaces<br>in<code>sim/api.ts</code> with annotations to make a new block.</p>
+<h3 id="Updating-the-templates-projects"><a href="#Updating-the-templates-projects" class="headerlink" title="Updating the templates projects"></a>Updating the <code>templates</code> projects</h3><p>Templates are the default projects for your target.<br>There is one default blocks project, and one default JavaScript project.<br>The initial templates are empty projects.<br>To change the default project, modify the package under <code>libs/blocksprj</code></p>
+<h3 id="Testing-the-target-locally"><a href="#Testing-the-target-locally" class="headerlink" title="Testing the target locally"></a>Testing the target locally</h3><p>Now that you’ve updated your target, it is ready to be run locally. Run the following command:</p>
+<pre><code>pxt serve
+</code></pre><p>The editor will automatically open the target API project which you can edit directly in PXT.<br>At this point, we recommend to create a new project using blocks that will serve as a sandbox.<br>New projects are created under the <code>/projects</code> folder when testing a target locally (and are automatically “git-ignored”). You can use these projects to change your templates. Simply copy the contents of your project under <code>/projects</code> to one of the templates under <code>/libs/templates/</code>.</p>
+<p>Whenever you make a change, the local web server will trigger a build. Simply reload the page once the build is done.</p>
+<h2 id="Defining-APIs-and-Blocks"><a href="#Defining-APIs-and-Blocks" class="headerlink" title="Defining APIs and Blocks"></a>Defining APIs and Blocks</h2><p>The APIs available in the PXT environment are loaded from TypeScript package (library) files<br>(the ones under <code>/libs</code>).<br>They can optionally be <a href="/simshim">auto-generated</a> from C++ library files or from TypeScript<br>simulator files.</p>
+<p>Read more about <a href="/defining-blocks">how to annotate your APIS</a> to expose them as blocks in PXT.</p>
+<h2 id="Path-rewriting"><a href="#Path-rewriting" class="headerlink" title="Path rewriting"></a>Path rewriting</h2><p>When uploading to PXT cloud URLs of various files are rewritten to ones pointing to the CDN.<br>There are three kinds of URLs on the CDN:</p>
+<ul>
+<li><code>/blob/&lt;blob_hash&gt;/some/path/filename.ext</code> - where the path and file name can be arbitrary</li>
+<li><code>/commit/&lt;commit_hash&gt;/path/in/that/commit/filename.ext</code> - where the path actually comes from the commit</li>
+<li><code>/tree/&lt;tree_hash&gt;/path/in/that/tree/filename.ext</code> - where the path actually comes from the tree</li>
+</ul>
+<p>Whenever possible, <code>/blob/</code> URLs should be used, since they only change when the file changes.<br>This allows for faster app updates.</p>
+<p>For an example, compare <a href="https://makecode.microbit.org/---manifest" target="_blank" rel="external">https://makecode.microbit.org/---manifest</a><br>and <a href="https://github.com/Microsoft/pxt/blob/master/webapp/public/release.manifest" target="_blank" rel="external">https://github.com/Microsoft/pxt/blob/master/webapp/public/release.manifest</a></p>
+<p>Generally, PXT will rewrite URLs starting with <code>/cdn/</code> to <code>/commit/...</code> and ones starting<br>with <code>/blb/</code> to <code>/blob/...</code>. This happens in manifest and HTML files, as well as some JavaScript<br>files (web worker sources and <code>embed.js</code>). Part of that rewriting happens client-side when uploading<br>(strings like <code>@commitCdnUrl@</code> and <code>@blobCdnUrl@</code> are introduced), and part happens in the cloud.</p>
+<p>Currently, in simulator files only, all of <code>/cdn/</code>, <code>/sim/</code> and <code>/blb/</code> are rewritten<br>to <code>/blob/...</code>. Going forward however, simulator files should use <code>/blb/</code> explicitly<br>to make the intent clear.</p>
+<p>The main reason to use <code>/cdn/</code> instead of <code>/blb/</code> is when resources require relative paths.<br>This is for example the case for Blockly media files.</p>
+<p>The <code>/tree/...</code> URLs are not yet supported in rewriting.</p>
+
+    </div>
+    <h2 class="post-nav">
+      
+      <a href="/2017/10/11/pxt-async/" class="prev">上一篇：异步 | PXT</a>
+      
+      <a href="/2017/10/11/pxt-pxtarget-json/" class="next">下一篇：配置pxtarget.json | PXT</a>
+
+    </h2>
+
+    <div class="footer">
+      Copyright @ <a href="/">lian</a> | 2009-2017
+    </div>
+  </div>
+
+  <script src="/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+  <script src="/js/post.js"></script>
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="icon" type="image/png" href="/img/robot.png">
+  <link rel="stylesheet" href="/css/post.css?v=1.1">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_407924_kx6yx3r9q4m6xbt9.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />
+
+  <title>
+    定义blocks | PXT |
+      小梁哥的个人网站
+  </title>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
+
+<body>
+  <div class="container">
+    <div class="header">
+
+      <a class="home-title" style="cursor:default;" onclick="javascript:void(0);return false;"><span>小梁哥的个人网站
+        <i class="iconfont icon-shuangjiantou-copy"></i>
+      </span></a>
+
+      <a href="/home/">首页</a>
+      <span><i class="iconfont icon-shuangjiantou-copy"></i></span>
+      <a href="/tags/PXT/">
+        PXT
+      </a>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <i class="iconfont icon-sousuo"></i>
+      </div>
+    </div>
+    <div class="post">
+      <h1>定义blocks | PXT</h1>
+      <div class="post-meta">
+        <p>作者： Lian</p>
+        <p>日期：
+          2017年10月11日 19:10
+        </p>
+      </div>
+      <div class="share-button"></div>
+    </div>
+    <div class="page">
+      <h1 id="Defining-blocks"><a href="#Defining-blocks" class="headerlink" title="Defining blocks"></a>Defining blocks</h1><p>This section describes how to annotate your PXT APIs to expose them in the Block Editor.</p>
+<p>All the <code>//%</code> annotations are found in TypeScript library files.<br>They can optionally be <a href="/simshim">auto-generated</a> from C++ library files or from TypeScript<br>simulator files.</p>
+<h2 id="Category"><a href="#Category" class="headerlink" title="Category"></a>Category</h2><p>Each top-level javascript namespace is used to populate a category in the Block Editor toolbox. The name will automatically be capitalized in the toolbox.</p>
+<pre class=" language-typescript-ignore"><code class="language-typescript-ignore">namespace basic {
+    ...
+}
+</code></pre>
+<p>You can also provide a JsDoc comment, color and weight for the namespace, as well as a friendly name (in Unicode).<br>We strongly recommend carefully picking colors as it dramatically impacts<br>that appearance and readability of your blocks. All blocks within the same namespace have the same color so that users can find the category easily from<br>samples.</p>
+<pre class=" language-typescript-ignore"><code class="language-typescript-ignore">/**
+ * Provides access to basic micro:bit functionality.
+ */
+//% color=190 weight=100 icon="\uf1ec" block="Basic Blocks"
+namespace basic {
+</code></pre>
+<ul>
+<li><code>icon</code> icon Unicode character from the icon font to display. The <a href="https://semantic-ui.com/elements/icon.html" target="_blank" rel="external">Semantic UI</a> icon set has been ported from Font Awesome (v4.5.6 at the time of writing), and a full list can be found at <a href="http://fontawesome.io/icons/" target="_blank" rel="external">http://fontawesome.io/icons/</a></li>
+<li><code>color</code> should be included in a comment line starting with <code>\\%</code>. The color takes a <strong>hue</strong> value or a HTML color.</li>
+</ul>
+<p>To have a category appear under the “Advanced” section of the Block Editor toolbox, add the annotation <code>advanced=true</code>.</p>
+<h2 id="Blocks"><a href="#Blocks" class="headerlink" title="Blocks"></a>Blocks</h2><p>All <strong>exported</strong> functions with a <code>block</code> attribute will be available in the Block Editor.</p>
+<pre class=" language-typescript-ignore"><code class="language-typescript-ignore">//% block
+export function showNumber(v: number, interval: number = 150): void
+{ }
+</code></pre>
+<p>If you need more control over the appearance of the block,<br>you can specify the <code>blockId</code> and <code>block</code> parameters.</p>
+<pre class=" language-typescript-ignore"><code class="language-typescript-ignore">//% blockId=device_show_number
+//% block="show|number %v"
+export function showNumber(v: number, interval: number = 150): void
+{ }
+</code></pre>
+<ul>
+<li><code>blockId</code> is a constant, unique id for the block. This id is serialized in block code so changing it will break your users.</li>
+<li><code>block</code> contains the syntax to build the block structure (more below).</li>
+</ul>
+<p>Other optional attributes can also be used:</p>
+<ul>
+<li><code>blockExternalInputs=</code> forces <code>External Inputs</code> rendering</li>
+<li><code>advanced=true</code> causes this block to be placed under the parent category’s “More…” subcategory. Useful for hiding advanced or rarely-used blocks by default</li>
+</ul>
+<h2 id="Block-syntax"><a href="#Block-syntax" class="headerlink" title="Block syntax"></a>Block syntax</h2><p>The <code>block</code> attribute specifies how the parameters of the function<br>will be organized to create the block.</p>
+<pre><code>block = field, { &#39;|&#39; field }
+field := string
+    | string `%` parameter [ `=` type ]
+parameter = string
+type = string
+</code></pre><ul>
+<li>each <code>field</code> is mapped to a field in the block editor</li>
+<li>the function parameter are mapped <strong>in order</strong> to <code>%parameter</code> argument. The loader automatically builds<br>a mapping between the block field names and the function names.</li>
+<li>the block will automatically switch to external inputs when enough parameters are detected</li>
+<li>A block type <code>=type</code> can be specified optionally for each parameter. It will be used to populate the shadow type.</li>
+</ul>
+<h2 id="Supported-types"><a href="#Supported-types" class="headerlink" title="Supported types"></a>Supported types</h2><p>The following types are supported in function signatures that are meant to be exported:</p>
+<ul>
+<li><code>number</code> (TypeScript) or <code>int</code> (C++)</li>
+<li><code>string</code> (TypeScript) or <code>StringData*</code> (C++)</li>
+<li>enums (see below)</li>
+<li>custom classes that are also exported</li>
+<li>arrays of the above</li>
+</ul>
+<h2 id="Callbacks-with-Parameters"><a href="#Callbacks-with-Parameters" class="headerlink" title="Callbacks with Parameters"></a>Callbacks with Parameters</h2><p>APIs that take in a callback function will have that callback converted into a statement input.<br>If the callback in the API is designed to take in parameters, the best way to map that pattern<br>to the blocks is by passing the callback a single parameter with a class type that contains<br>all the other values. For example:</p>
+<pre class=" language-typescript-ignore"><code class="language-typescript-ignore">export class ArgumentClass {
+    argumentA: number;
+    argumentB: string;
+}
+
+//% mutate=objectdestructuring
+//% mutateText="My Arguments"
+//% mutateDefaults="argumentA;argumentA,argumentB"
+// ...
+export function addSomeEventHandler((a: ArgumentClass) => void) { };
+</code></pre>
+<p>In the above example, setting <code>mutate=objectdestructuring</code> will cause this API to use Blockly “mutators”<br>to let users change what parameters appear in the blocks. Each parameter will be given an<br>optional variable field in the block that defines a variable that can be used within the callback.<br>The variable fields compile to object destructuring in the TypeScript code. For example:</p>
+<pre class=" language-typescript-ignore"><code class="language-typescript-ignore">addSomeEventHandler(({argumentA, argumentB}) => {
+
+})
+</code></pre>
+<p>For an example of this pattern in action, see the <code>radio.onDataPacketReceived</code> block in<br>the microbit target.</p>
+<p>In some cases it can be useful to change the runtime behavior of the API based on the properties selected by the<br>user. To enable that behavior, create an enum with entries that have the same names as the argument object’s<br>properties and add an extra parameter taking in an enum array to the API. For example:</p>
+<pre class=" language-typescript-ignore"><code class="language-typescript-ignore">export class ArgumentClass {
+    argumentA: number;
+    argumentB: string;
+}
+
+enum ArgNames {
+    argumentA,
+    argumentB
+}
+
+//% mutate=objectdestructuring
+//% mutateText="My Arguments"
+//% mutateDefaults="argumentA;argumentA,argumentB"
+//% mutatePropertyEnum="argNames"
+// ...
+export function addSomeEventHandler(args: ArgNames[], (a: ArgumentClass) => void) { };
+</code></pre>
+<p>Note the <code>mutatePropertyEnum</code> attribute added to the comment annotations. The block for this API will<br>look the same as the previous example but the compiled code will also include the arguments passed:</p>
+<pre class=" language-typescript-ignore"><code class="language-typescript-ignore">addSomeEventHandler([ArgNames.argumentA, ArgNames.argumentB], ({argumentA, argumentB}) => {
+
+})
+</code></pre>
+<p>The other attributes related to object destructuring mutators include:</p>
+<ul>
+<li><code>mutateText</code> - defines the text that appears in the top block of the Blockly mutator dialog (the dialog that appears when you click the blue gear)</li>
+<li><code>mutateDefaults</code> - defines the versions of this block that should appear in the toolbox. Block definitions are separated by semicolons and property names should be separated by commas</li>
+</ul>
+<h2 id="Enums"><a href="#Enums" class="headerlink" title="Enums"></a>Enums</h2><p>Enum are supported and will automatically be represented by a dropdown in blocks.</p>
+<pre class=" language-typescript-ignore"><code class="language-typescript-ignore">enum Button {
+    A = 1,
+    B = 2,
+    //% blockId="ApB" block="A+B"
+    AB = 3,
+}
+</code></pre>
+<ul>
+<li>the initializer can be used to map the value</li>
+<li>the <code>blockId</code> attribute can be used to override the block id</li>
+<li>the <code>block</code> attribute can be used to override the rendered string</li>
+</ul>
+<h3 id="Tip-dropdown-for-non-enum-parameters"><a href="#Tip-dropdown-for-non-enum-parameters" class="headerlink" title="Tip: dropdown for non-enum parameters"></a>Tip: dropdown for non-enum parameters</h3><p>It’s possible to provide a drop-down for a parameter that is not an enum. It involves the following step:</p>
+<ul>
+<li>create an enum with desired drop down entry<pre class=" language-typescript-ignore"><code class="language-typescript-ignore">enum Delimiters {
+  //% block="new line"
+  NewLine = 1,
+  //% block=","
+  Comma = 2
+}
+</code></pre>
+</li>
+<li>a function that takes the enum as parameter and returns the according value<pre class=" language-typescript-ignore"><code class="language-typescript-ignore">//% blockId="delimiter_conv" block="%del"
+export function delimiters(del : Delimiters) : string {
+  switch(del) {
+      case Delimiters.NewLine: return "\n";
+      case Delimiters.Comma:  return ",";
+      ...
+  }
+}
+</code></pre>
+</li>
+<li>use the enum conversion function block id (<code>delimiter_conv</code>) as the value in the <code>block</code> parameter of your function<pre class=" language-typescript-ignore"><code class="language-typescript-ignore">//% blockId="read_until" block="read until %del=delimiter_conv"
+export function readUntil(del: string) : string {
+  ...
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="Docs-and-default-values"><a href="#Docs-and-default-values" class="headerlink" title="Docs and default values"></a>Docs and default values</h2><p>The JSDoc comment is automatically used as the help for the block.</p>
+<pre class=" language-typescript-ignore"><code class="language-typescript-ignore">/**
+ * Scroll a number on the screen. If the number fits on the screen (i.e. is a single digit), do not scroll.
+ * @param interval speed of scroll; eg: 150, 100, 200, -100
+*/
+//% help=functions/show-number
+export function showNumber(value: number, interval: number = 150): void
+{ }
+</code></pre>
+<ul>
+<li>If <code>@param</code> annotation is available with an <code>eg:</code> section, the first<br>value is used as the shadow value.</li>
+<li>An optional <code>help</code> attribute can be used to point to an specific documentation path.</li>
+<li>If the parameter has a default value (<code>interval</code> in this case), it is <strong>not</strong> exposed in blocks.</li>
+<li>If you want to include minimum and maximum value range for a numeric parameter, you can use square brackets with the range [min-max] after the parameter name in the <code>@param</code> annotation. It is important to include the shadow value if you are using range<ul>
+<li><code>@param</code> power [0-7] a value in the range 0..7, where 0 is the lowest power and 7 is the highest. <code>eg:</code> 7</li>
+</ul>
+</li>
+</ul>
+<h2 id="Objects-and-Instance-methods"><a href="#Objects-and-Instance-methods" class="headerlink" title="Objects and Instance methods"></a>Objects and Instance methods</h2><p>It is possible to expose instance methods and object factories, either directly<br>or with a bit of flattening (which is recommended, as flat, C-style APIs map best to blocks).</p>
+<h3 id="Direct"><a href="#Direct" class="headerlink" title="Direct"></a>Direct</h3><pre class=" language-typescript-ignore"><code class="language-typescript-ignore">//%
+class Message {
+    ...
+    //% blockId="message_get_text" block="%this|text"
+    public getText() { ... }
+}
+</code></pre>
+<ul>
+<li>when annotating an instance method, you need to specify the <code>%this</code> parameter in the block syntax definition.</li>
+</ul>
+<p>You will need to expose a factory method to create your objects as needed. For the example above, we add a function that creates the message:</p>
+<pre class=" language-typescript-ignore"><code class="language-typescript-ignore">//% blockId="create_message" block="create message|with %text"
+export function createMessage(text: string) : Message {
+    return new Message(text);
+}
+</code></pre>
+<h3 id="Auto-create"><a href="#Auto-create" class="headerlink" title="Auto-create"></a>Auto-create</h3><p>If object has a reasonable default constructor, and it is harmless to call this<br>constructor even if the variable needs to be overwritten later, then it’s useful<br>to designate a parameter-less function as auto-create, like this:</p>
+<pre class=" language-typescript-ignore"><code class="language-typescript-ignore">namespace images {
+    export function emptyImage(width = 5, height = 5): Image { ... }
+}
+//% autoCreate=images.emptyImage
+class Image {
+    ...
+}
+</code></pre>
+<p>Now, when user adds a block referring to a method of <code>Image</code>, a global<br>variable will be automatically introduced and initialized with <code>images.emptyImage()</code>.</p>
+<p>In cases when the default constructor has side effects (eg., configuring a pin),<br>or if the default value is most often overridden,<br>the <code>autoCreate</code> syntax should not be used.</p>
+<h3 id="Fixed-Instance-Set"><a href="#Fixed-Instance-Set" class="headerlink" title="Fixed Instance Set"></a>Fixed Instance Set</h3><p>It is sometimes the case that there is only a fixed number of instances<br>of a given class. One example is object representing pins on an electronic board.<br>It is possible to expose these instances in a manner similar to an enum:</p>
+<pre class=" language-typescript-ignore"><code class="language-typescript-ignore">//% fixedInstances
+class DigitalPin {
+    ...
+    //% blockId=device_set_digital_pin block="digital write|pin %name|to %value"
+    //% blockNamespace=pins
+    digitalWrite(value: number): void { ... }
+}
+
+namespace pins {
+    //% fixedInstance
+    let D0: DigitalPin;
+    //% fixedInstance
+    let D1: DigitalPin;
+}
+</code></pre>
+<p>This will result in a block <code>digital write pin [D0] to [0]</code>, where the<br>first hold is a dropdown with <code>D0</code> and <code>D1</code>, and the second hole is a regular<br>integer value. The variables <code>D0</code> and <code>D1</code> can have additional annotations<br>(eg., <code>block=&quot;D#0&quot;</code>). Currently, only variables are supported with <code>fixedInstance</code><br>(<code>let</code> or <code>const</code>).</p>
+<p>Fixed instances also support inheritance. For example, consider adding the following<br>declarations.</p>
+<pre class=" language-typescript-ignore"><code class="language-typescript-ignore">//% fixedInstances
+class AnalogPin extends DigitalPin {
+    ...
+    //% blockId=device_set_analog_pin block="analog write|pin %name|to %value"
+    //% blockNamespace=pins
+    analogWrite(value: number): void { ... }
+}
+
+namespace pins {
+    //% fixedInstance
+    let A0: AnalogPin;
+}
+</code></pre>
+<p>The <code>analog write</code> will have a single-option dropdown with <code>A0</code>, but<br>the optionals on <code>digital write</code> will be now <code>D0</code>, <code>D1</code> and <code>A0</code>.</p>
+<p>Variables with <code>fixedInstance</code> annotations can be added anywhere, at the top-level,<br>even in different libraries or namespaces.</p>
+<p>This feature is often used with <code>indexedInstance*</code> attributes.</p>
+<p>It is also possible to define the instances to be used in blocks in TypeScript,<br>for example:</p>
+<pre class=" language-typescript-ignore"><code class="language-typescript-ignore">namespace pins {
+    //% fixedInstance whenUsed
+    export const A7 = new AnalogPin(7);
+}
+</code></pre>
+<p>The <code>whenUsed</code> annotation causes the variable to be only included in compilation<br>when it is used, even though it is initialized with something that can possibly<br>have side effects. This happens automatically when there is no initializer,<br>or the initializer is a simple constant, but for function calls and constructors<br>you have to include <code>whenUsed</code>.</p>
+<h2 id="Ordering"><a href="#Ordering" class="headerlink" title="Ordering"></a>Ordering</h2><p>All blocks have a default <strong>weight</strong> of 50 that is used to sort them in the UI with the highest weight showing up first. To tweak the ordering,<br>simply annotate the function with the <code>weight</code> macro:</p>
+<pre><code>//% weight=10
+...
+</code></pre><p>If given API is only for Blocks usage, and doesn’t make much sense in TypeScript<br>(for example, because there are alternative TypeScript APIs), you can use <code>//% hidden</code><br>flag to disable showing it in auto-completion.</p>
+<h2 id="Grouping"><a href="#Grouping" class="headerlink" title="Grouping"></a>Grouping</h2><p>Use the <strong>blockGap</strong> macro to specify the distance to the next block in the toolbox. Combined with the weight parameter,<br>this macro allows to definte groups of blocks. The default <code>blockGap</code> value is <code>8</code>.</p>
+<pre><code>//% blockGap=14
+...
+</code></pre><h2 id="Testing-your-Blocks"><a href="#Testing-your-Blocks" class="headerlink" title="Testing your Blocks"></a>Testing your Blocks</h2><p>We recommend to build your block APIs iteratively and try it out in the editor to get the “feel of it”.<br>To do so, the ideal setup is:</p>
+<ul>
+<li>run your target locally using <code>pxt serve</code></li>
+<li>keep a code editor with the TypeScript opened where you can edit the APIs</li>
+<li>refresh the browser and try out the changes on a dummy program.</li>
+</ul>
+<p>Interestingly, you can design your entire API without implementing it!</p>
+<h2 id="Deprecating-Blocks"><a href="#Deprecating-Blocks" class="headerlink" title="Deprecating Blocks"></a>Deprecating Blocks</h2><p>To deprecate an existing API, you can add the <strong>deprecated</strong> attribute like so:</p>
+<pre><code>//% deprecated=true
+</code></pre><p>This will cause the API to still be usable in TypeScript, but prevent the block from appearing in the<br>Blockly toolbox. If a user tries to load a project that uses the old API, the project will still load<br>correctly as long as the TypeScript API is present. Any deprecated blocks in the project will appear in<br>the editor but not the toolbox.</p>
+<h2 id="API-design-Tips-and-Tricks"><a href="#API-design-Tips-and-Tricks" class="headerlink" title="API design Tips and Tricks"></a>API design Tips and Tricks</h2><p>A few tips gathered while designing various APIs for the Block Editor.</p>
+<ul>
+<li><strong>Design for beginners</strong>: the block interface is for beginners. You’ll want to create a specific layer of C-like function for that purpose.</li>
+<li><strong>Anything that snaps together will be tried by the user</strong>: your runtime should deal with invalid input with graceful degradation rather than abrupt crashes.<br>Some users will try to snap anything together - get ready for it.</li>
+<li><strong>OO is cumbersome</strong> in blocks: we recommend using a C-like APIs – just function – rather than OO classes. It maps better to blocks.</li>
+<li><strong>Keep the number of blocks small</strong>: there’s only so much space in the toolbox. Be specific about each API you want to see in Blocks.</li>
+</ul>
+
+    </div>
+    <h2 class="post-nav">
+      
+      <a href="/2017/10/11/pxt-pxtarget-json/" class="prev">上一篇：配置pxtarget.json | PXT</a>
+      
+      <a href="/2017/10/11/pxt-shim/" class="next">下一篇：SHIM | PXT</a>
+
+    </h2>
+
+    <div class="footer">
+      Copyright @ <a href="/">lian</a> | 2009-2017
+    </div>
+  </div>
+
+  <script src="/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+  <script src="/js/post.js"></script>
+
+
+</body>
+
+</html>
+

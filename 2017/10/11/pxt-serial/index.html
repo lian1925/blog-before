@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="icon" type="image/png" href="/img/robot.png">
+  <link rel="stylesheet" href="/css/post.css?v=1.1">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_407924_kx6yx3r9q4m6xbt9.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />
+
+  <title>
+    舵机串口 | PXT |
+      小梁哥的个人网站
+  </title>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
+
+<body>
+  <div class="container">
+    <div class="header">
+
+      <a class="home-title" style="cursor:default;" onclick="javascript:void(0);return false;"><span>小梁哥的个人网站
+        <i class="iconfont icon-shuangjiantou-copy"></i>
+      </span></a>
+
+      <a href="/home/">首页</a>
+      <span><i class="iconfont icon-shuangjiantou-copy"></i></span>
+      <a href="/tags/PXT/">
+        PXT
+      </a>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <i class="iconfont icon-sousuo"></i>
+      </div>
+    </div>
+    <div class="post">
+      <h1>舵机串口 | PXT</h1>
+      <div class="post-meta">
+        <p>作者： Lian</p>
+        <p>日期：
+          2017年10月11日 20:10
+        </p>
+      </div>
+      <div class="share-button"></div>
+    </div>
+    <div class="page">
+      <h1 id="pxt-hidserial-Manual-Page"><a href="#pxt-hidserial-Manual-Page" class="headerlink" title="pxt-hidserial Manual Page"></a>pxt-hidserial Manual Page</h1><h3 id="description-Monitors-serial-output-from-certain-boards"><a href="#description-Monitors-serial-output-from-certain-boards" class="headerlink" title="@description Monitors serial output from certain boards"></a>@description Monitors serial output from certain boards</h3><p>Monitors serial output from certain boards (in particular SAMD21 ones)</p>
+<pre><code>pxt hidserial
+</code></pre><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>When using Codal runtime, PXT sends data from <code>serial.writeLine()</code> and friends<br>over a <a href="https://github.com/Microsoft/uf2/blob/master/hf2.md" target="_blank" rel="external">custom USB HID protocol called HF2</a>.<br>The protocol supports a number of other features, including flashing and some debugging.<br>HF2 works on all major operating systems (including Windows 7) without the need<br>for any drivers.</p>
+<p><code>pxt hidserial</code> just dumps serial data to standard output. When using <code>pxt serve</code> and developing<br>at <code>http://localhost:3232</code>, the HID serial is forwarded to the browser, so there is no<br>need to use <code>pxt hidserial</code>.</p>
+<p>Other useful HID command include <code>pxt hidlist</code> to list connected HID devices<br>and <code>pxt hiddmesg</code> to dump Codal debug buffer. PXT can also deploy over HID - this<br>is the default when using command line or <code>pxt serve</code>.</p>
+<h2 id="See-Also"><a href="#See-Also" class="headerlink" title="See Also"></a>See Also</h2><p><a href="/cli">pxt</a> tool</p>
+
+    </div>
+    <h2 class="post-nav">
+      
+      <a href="/2017/10/11/pxt-static-pkg/" class="prev">上一篇：静态HTML | PXT</a>
+      
+      <a href="/2017/10/11/pxt-theme/" class="next">下一篇：主题 | PXT</a>
+
+    </h2>
+
+    <div class="footer">
+      Copyright @ <a href="/">lian</a> | 2009-2017
+    </div>
+  </div>
+
+  <script src="/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+  <script src="/js/post.js"></script>
+
+
+</body>
+
+</html>
+
