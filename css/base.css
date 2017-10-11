@@ -100,7 +100,13 @@ pre {
 }
 
 .page p {
-  line-height: 25px;
+  line-height: 30px;
+  font-size: 18px;
+}
+
+.page ul li {
+  line-height: 30px;
+  font-size: 18px;
 }
 
 .page p>a {
