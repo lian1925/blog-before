@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/base.css?v=1.2">
+  <link rel="icon" type="image/png" href="/img/robot.png">
+  <link rel="stylesheet" href="/css/post.css?v=1.2">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_407924_kx6yx3r9q4m6xbt9.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />
+
+  <title>
+    课17 Class,物以类聚 | Python |
+      小梁哥的个人网站
+  </title>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
+
+<body>
+  <div class="container">
+    <div class="header">
+
+      <a class="home-title" style="cursor:default;" onclick="javascript:void(0);return false;"><span>小梁哥的个人网站
+        <i class="iconfont icon-shuangjiantou-copy"></i>
+      </span></a>
+
+      <a href="/home/">首页</a>
+      <span><i class="iconfont icon-shuangjiantou-copy"></i></span>
+      <a href="/tags/python/">
+        python
+      </a>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <i class="iconfont icon-sousuo"></i>
+      </div>
+    </div>
+    <div class="post">
+      <h1>课17 Class,物以类聚 | Python</h1>
+      <div class="post-meta">
+        <p>作者： Lian</p>
+        <p>日期：
+          2017年11月07日 21:11
+        </p>
+      </div>
+      <div class="share-button"></div>
+    </div>
+    <div class="page">
+      <p>学完字典，你可能会想到，将函数放到字典里是很有趣的一件事情。或许你应该也会想到“如果 Python 能自动为你做这件事情该 多好”。事实上也的确有,那就是 class 这个关键字。<br><a id="more"></a></p>
+<h2 id="代码练习"><a href="#代码练习" class="headerlink" title="代码练习"></a>代码练习</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">TheThing</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>number <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">def</span> <span class="token function">some_function</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span> <span class="token string">"I got called."</span>
+    <span class="token keyword">def</span> <span class="token function">add_me_up</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> more<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>number <span class="token operator">+=</span> more
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>number
+
+<span class="token comment" spellcheck="true"># two different things</span>
+a <span class="token operator">=</span> TheThing<span class="token punctuation">(</span><span class="token punctuation">)</span>
+b <span class="token operator">=</span> TheThing<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+a<span class="token punctuation">.</span>some_function<span class="token punctuation">(</span><span class="token punctuation">)</span>
+b<span class="token punctuation">.</span>some_function<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span> a<span class="token punctuation">.</span>add_me_up<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> b<span class="token punctuation">.</span>add_me_up<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span> a<span class="token punctuation">.</span>number
+<span class="token keyword">print</span> b<span class="token punctuation">.</span>number
+
+<span class="token comment" spellcheck="true"># Study this. This is how you pass a variable</span>
+<span class="token comment" spellcheck="true"># from one class to another. You will need this.</span>
+<span class="token keyword">class</span> <span class="token class-name">TheMultiplier</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">do_it</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">34</span>
+        self<span class="token punctuation">.</span>base <span class="token operator">=</span> base
+
+    <span class="token keyword">def</span> <span class="token function">do_it</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>m<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> m <span class="token operator">*</span> self<span class="token punctuation">.</span>base
+
+x <span class="token operator">=</span> TheMultiplier<span class="token punctuation">(</span>a<span class="token punctuation">.</span>number<span class="token punctuation">)</span>
+<span class="token keyword">print</span> x<span class="token punctuation">.</span>do_it<span class="token punctuation">(</span>b<span class="token punctuation">.</span>number<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="你应该看到的结果"><a href="#你应该看到的结果" class="headerlink" title="你应该看到的结果"></a>你应该看到的结果</h2><p>Todo later</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>1、<strong>init</strong>()起什么作用？<br>第一种方法<strong>init</strong>()方法是一种特殊的方法，被称为类的构造函数或初始化方法，当创建了这个类的实例时就会调用该方法。<br>2、self代表什么？<br>self 代表类的实例，self 在定义类的方法时是必须有的，虽然在调用时不必传入相应的参数。</p>
+
+    </div>
+    <h2 class="post-nav">
+      
+      <a href="/2017/11/07/python-code-16/" class="prev">上一篇：课16 可爱的字典 | Python</a>
+      
+      <a href="#" class="next">下一篇：无</a>
+
+    </h2>
+
+    <div class="footer">
+      Copyright @ <a href="/">lian</a> | 2009-2017
+    </div>
+  </div>
+
+  <script src="/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+  <script src="/js/post.js"></script>
+
+
+</body>
+
+</html>
+
