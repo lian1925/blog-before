@@ -501,7 +501,7 @@ template {
   display: none;
 }
 
-@media (max-width: 380px) {
+@media (max-width: 420px) {
   .page pre {
     margin-left: 0px !important;
     border: 1px solid rgba(0, 0, 0, 0.3);
