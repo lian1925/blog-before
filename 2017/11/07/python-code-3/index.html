@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/base.css?v=1.1">
+  <link rel="icon" type="image/png" href="/img/robot.png">
+  <link rel="stylesheet" href="/css/post.css?v=1.1">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_407924_kx6yx3r9q4m6xbt9.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />
+
+  <title>
+    课3 数字运算 | Python |
+      小梁哥的个人网站
+  </title>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
+
+<body>
+  <div class="container">
+    <div class="header">
+
+      <a class="home-title" style="cursor:default;" onclick="javascript:void(0);return false;"><span>小梁哥的个人网站
+        <i class="iconfont icon-shuangjiantou-copy"></i>
+      </span></a>
+
+      <a href="/home/">首页</a>
+      <span><i class="iconfont icon-shuangjiantou-copy"></i></span>
+      <a href="/tags/Python/">
+        Python
+      </a>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <i class="iconfont icon-sousuo"></i>
+      </div>
+    </div>
+    <div class="post">
+      <h1>课3 数字运算 | Python</h1>
+      <div class="post-meta">
+        <p>作者： Lian</p>
+        <p>日期：
+          2017年11月07日 10:11
+        </p>
+      </div>
+      <div class="share-button"></div>
+    </div>
+    <div class="page">
+      <p>每一种编程语言都会包含进行数学运算的方法。很多程序员喜欢用数学吓唬编程世界外面的人，他们经常撒谎说他们是数学天才，其实他们根本不是。让我们见识一下python的数学运算。<br><a id="more"></a><br>本课将会学习很多数学运算符号，让我们看看他们是什么？你要一边写，一边念，直到自己念烦为止。<br><code>+</code> 加号<br><code>-</code> 减号<br><code>*</code> 星号，代表乘法<br><code>/</code> 斜杠，代表除法<br><code>%</code> 百分号，代表除余<br><code>&lt;</code> 小于号<br><code>&gt;</code> 大于号<br><code>&lt;=</code> 小于等于号<br><code>&gt;=</code> 大于等于号</p>
+<h2 id="代码练习"><a href="#代码练习" class="headerlink" title="代码练习"></a>代码练习</h2><p>接下来的代码练习将让你学会注释。<br>打开atom,新建一个文件，命名为lesson3.py,输入下面的代码：</p>
+<pre class=" language-python"><code class="language-python">
+<span class="token keyword">print</span> <span class="token string">"I will now count my chickens:"</span>
+<span class="token keyword">print</span> <span class="token string">"Hens"</span><span class="token punctuation">,</span> <span class="token number">25</span> <span class="token operator">+</span> <span class="token number">30</span> <span class="token operator">/</span> <span class="token number">6</span>
+<span class="token keyword">print</span> <span class="token string">"Roosters"</span><span class="token punctuation">,</span> <span class="token number">100</span> <span class="token operator">-</span> <span class="token number">25</span> <span class="token operator">*</span> <span class="token number">3</span> <span class="token operator">%</span> <span class="token number">4</span>
+<span class="token keyword">print</span> <span class="token string">"Now I will count the eggs:"</span>
+<span class="token keyword">print</span> <span class="token number">3</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">-</span> <span class="token number">5</span> <span class="token operator">+</span> <span class="token number">4</span> <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token number">4</span> <span class="token operator">+</span> <span class="token number">6</span>
+<span class="token keyword">print</span> <span class="token string">"Is it true that 3 + 2 &lt; 5 - 7?"</span> <span class="token number">10</span>
+<span class="token keyword">print</span> <span class="token number">3</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">&lt;</span> <span class="token number">5</span> <span class="token operator">-</span> <span class="token number">7</span>
+<span class="token keyword">print</span> <span class="token string">"What is 3 + 2?"</span><span class="token punctuation">,</span> <span class="token number">3</span> <span class="token operator">+</span> <span class="token number">2</span>
+<span class="token keyword">print</span> <span class="token string">"What is 5 - 7?"</span><span class="token punctuation">,</span> <span class="token number">5</span> <span class="token operator">-</span> <span class="token number">7</span>
+<span class="token keyword">print</span> <span class="token string">"Oh, that's why it's False."</span>
+<span class="token keyword">print</span> <span class="token string">"How about some more."</span>
+<span class="token keyword">print</span> <span class="token string">"Is it greater?"</span><span class="token punctuation">,</span> <span class="token number">5</span> <span class="token operator">></span> <span class="token operator">-</span><span class="token number">2</span>
+<span class="token keyword">print</span> <span class="token string">"Is it greater or equal?"</span><span class="token punctuation">,</span> <span class="token number">5</span> <span class="token operator">>=</span> <span class="token operator">-</span><span class="token number">2</span>
+<span class="token keyword">print</span> <span class="token string">"Is it less or equal?"</span><span class="token punctuation">,</span> <span class="token number">5</span> <span class="token operator">&lt;=</span> <span class="token operator">-</span><span class="token number">2</span>
+</code></pre>
+<h2 id="你应该看到的结果"><a href="#你应该看到的结果" class="headerlink" title="你应该看到的结果"></a>你应该看到的结果</h2><p>$ python lesson3.py<br>I will now count my chickens:<br>Hens 30<br>Roosters 97<br>Now I will count the eggs:<br>7<br>Is it true that 3 + 2 &lt; 5 - 7?<br>False<br>What is 3 + 2? 5<br>What is 5 - 7? -2<br>Oh, that’s why it’s False.<br>How about some more.<br>Is it greater? True<br>Is it greater or equal? True<br>Is it less or equal? False<br>$</p>
+<h2 id="加分项"><a href="#加分项" class="headerlink" title="加分项"></a>加分项</h2><p>1、在每一行用#加上注释，说明一下这行的作用<br>2、使用前面学习的运算符号，把python当计算器玩玩</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>为什么 / 除法算出来的结果比实际小<br>其实不是没算对，而是它把小数部分省略了，试试 7 / 4 与 7.0 / 4.0 比较一下，你就能看出不同了。</p>
+
+    </div>
+    <h2 class="post-nav">
+      
+      <a href="/2017/11/07/python-code-1/" class="prev">上一篇：课1 第一个程序 | python</a>
+      
+      <a href="#" class="next">下一篇：无</a>
+
+    </h2>
+
+    <div class="footer">
+      Copyright @ <a href="/">lian</a> | 2009-2017
+    </div>
+  </div>
+
+  <script src="/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+  <script src="/js/post.js"></script>
+
+
+</body>
+
+</html>
+
