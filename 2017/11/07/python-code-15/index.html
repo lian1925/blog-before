@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />
 
   <title>
-    课15 |
+    课15 地图与游戏 | python |
       小梁哥的个人网站
   </title>
 <link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="post">
-      <h1>课15</h1>
+      <h1>课15 地图与游戏 | python</h1>
       <div class="post-meta">
         <p>作者： Lian</p>
         <p>日期：
@@ -46,7 +46,80 @@
       <div class="share-button"></div>
     </div>
     <div class="page">
-      
+      <p>你已经学会了 if 语句、函数、还有列表。让我们试着将这些知识结合起来，你将会发现我们可以实现有趣好玩的游戏。<br><a id="more"></a></p>
+<h2 id="代码练习"><a href="#代码练习" class="headerlink" title="代码练习"></a>代码练习</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> sys <span class="token keyword">import</span> exit
+
+<span class="token keyword">def</span> <span class="token function">gold_room</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token string">"This room is full of gold. How much do you take?"</span>
+
+    next <span class="token operator">=</span> raw_input<span class="token punctuation">(</span><span class="token string">"> "</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token string">"0"</span> <span class="token keyword">in</span> next <span class="token operator">or</span> <span class="token string">"1"</span> <span class="token keyword">in</span> next<span class="token punctuation">:</span>
+       how_much <span class="token operator">=</span> int<span class="token punctuation">(</span>next<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+       dead<span class="token punctuation">(</span><span class="token string">"Man, learn to type a number."</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> how_much <span class="token operator">&lt;</span> <span class="token number">50</span><span class="token punctuation">:</span>
+       <span class="token keyword">print</span> <span class="token string">"Nice, you're not greedy, you win!"</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+       dead<span class="token punctuation">(</span><span class="token string">"You greedy bastard!"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">bear_room</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token string">"There is a bear here."</span>
+    <span class="token keyword">print</span> <span class="token string">"The bear has a bunch of honey."</span>
+    <span class="token keyword">print</span> <span class="token string">"The fat bear is in front of another door."</span>
+    <span class="token keyword">print</span> <span class="token string">"How are you going to move the bear?"</span>
+    bear_moved <span class="token operator">=</span> <span class="token boolean">False</span>
+
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        next <span class="token operator">=</span> raw_input<span class="token punctuation">(</span><span class="token string">"> "</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> next <span class="token operator">==</span> <span class="token string">"take honey"</span><span class="token punctuation">:</span>
+            dead<span class="token punctuation">(</span><span class="token string">"The bear looks at you then slaps your face off."</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> next <span class="token operator">==</span> <span class="token string">"taunt bear"</span> <span class="token operator">and</span> <span class="token operator">not</span> bear_moved<span class="token punctuation">:</span>
+            <span class="token keyword">print</span> <span class="token string">"The bear has moved from the door. You can go through it now."</span>
+            bear_moved <span class="token operator">=</span> <span class="token boolean">True</span>
+        <span class="token keyword">elif</span> next <span class="token operator">==</span> <span class="token string">"taunt bear"</span> <span class="token operator">and</span> bear_moved<span class="token punctuation">:</span>
+            dead<span class="token punctuation">(</span><span class="token string">"The bear gets pissed off and chews your leg off."</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> next <span class="token operator">==</span> <span class="token string">"open door"</span> <span class="token operator">and</span> bear_moved<span class="token punctuation">:</span>
+            gold_room<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span> <span class="token string">"I got no idea what that means."</span>
+
+<span class="token keyword">def</span> <span class="token function">cthulhu_room</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token string">"Here you see the great evil Cthulhu."</span> <span class="token number">48</span>
+    <span class="token keyword">print</span> <span class="token string">"He, it, whatever stares at you and you go insane."</span>
+    <span class="token keyword">print</span> <span class="token string">"Do you flee for your life or eat your head?"</span>
+
+    next <span class="token operator">=</span> raw_input<span class="token punctuation">(</span><span class="token string">"> "</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token string">"flee"</span> <span class="token keyword">in</span> next<span class="token punctuation">:</span>
+        start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">elif</span> <span class="token string">"head"</span> <span class="token keyword">in</span> next<span class="token punctuation">:</span>
+        dead<span class="token punctuation">(</span><span class="token string">"Well that was tasty!"</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        cthulhu_room<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">dead</span><span class="token punctuation">(</span>why<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span> why<span class="token punctuation">,</span> <span class="token string">"Good job!"</span>
+    exit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token string">"You are in a dark room."</span>
+    <span class="token keyword">print</span> <span class="token string">"There is a door to your right and left."</span> <span class="token number">66</span>
+    <span class="token keyword">print</span> <span class="token string">"Which one do you take?"</span> <span class="token number">68</span>
+
+    next <span class="token operator">=</span> raw_input<span class="token punctuation">(</span><span class="token string">"> "</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> next <span class="token operator">==</span> <span class="token string">"left"</span><span class="token punctuation">:</span>
+        bear_room<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">elif</span> next <span class="token operator">==</span> <span class="token string">"right"</span><span class="token punctuation">:</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+      dead<span class="token punctuation">(</span><span class="token string">"You stumble around the room until you starve."</span><span class="token punctuation">)</span>
+
+start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="你应该看到的结果"><a href="#你应该看到的结果" class="headerlink" title="你应该看到的结果"></a>你应该看到的结果</h2><p>下面是我玩游戏的过程:<br>$ python ex35.py<br>You are in a dark room.<br>There is a door to your right and left.<br>Which one do you take?<br><code>&gt; left</code><br>There is a bear here.<br>The bear has a bunch of honey.<br>The fat bear is in front of another door.<br>How are you going to move the bear?<br><code>&gt; taunt bear</code><br>The bear has moved from the door. You can go through it now.<br><code>&gt; open door</code><br>This room is full of gold.  How much do you take?<br><code>&gt; asf</code><br>Man, learn to type a number. Good job!<br>$</p>
+<h2 id="加分项"><a href="#加分项" class="headerlink" title="加分项"></a>加分项</h2><p>1、逐行读代码，关键地方加上注释<br>2、画出游戏的地图</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>1、为什么是 while True:?<br>这样可以创建一个无限循环。<br>2、exit(0) 有什么功能?<br>在很多类型的操作系统里,<code>exit(0)</code> 可以中断某个程序,而其中的数字参数则用来表示程序是否是碰到错误而中断。 exit(1) 表示发生了错误,而 exit(0) 则表示程序是正常退出的。</p>
+
     </div>
     <h2 class="post-nav">
       

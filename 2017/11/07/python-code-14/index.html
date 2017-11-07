@@ -47,14 +47,44 @@
     </div>
     <div class="page">
       <p>我们已经知道，使用条件判断，可以让我们的代码变得聪明，做出一些智能的判断。然而，我们的程序还需要具备完成重复任务的能力。列表与循环的知识将赋予程序更强的威力。<br><a id="more"></a></p>
-<h2 id="新知识"><a href="#新知识" class="headerlink" title="新知识"></a>新知识</h2><p>我们看看如 何创建列表:<br>hairs = [‘brown’, ‘blond’, ‘red’]<br>eyes = [‘brown’, ‘blue’, ‘green’]<br>weights = [1, 2, 3, 4]</p>
+<h2 id="新知识"><a href="#新知识" class="headerlink" title="新知识"></a>新知识</h2><p>我们看看如何创建列表:<br>hairs = [‘brown’, ‘blond’, ‘red’]<br>eyes = [‘brown’, ‘blue’, ‘green’]<br>weights = [1, 2, 3, 4]</p>
+<h2 id="代码练习"><a href="#代码练习" class="headerlink" title="代码练习"></a>代码练习</h2><pre class=" language-python"><code class="language-python">the_count <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
+fruits <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'apples'</span><span class="token punctuation">,</span> <span class="token string">'oranges'</span><span class="token punctuation">,</span> <span class="token string">'pears'</span><span class="token punctuation">,</span> <span class="token string">'apricots'</span><span class="token punctuation">]</span>
+change <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'pennies'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'dimes'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'quarters'</span><span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># this first kind of for-loop goes through a list</span>
+<span class="token keyword">for</span> number <span class="token keyword">in</span> the_count<span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token string">"This is count %d"</span> <span class="token operator">%</span> number
+<span class="token comment" spellcheck="true"># same as above</span>
+<span class="token keyword">for</span> fruit <span class="token keyword">in</span> fruits<span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token string">"A fruit of type: %s"</span> <span class="token operator">%</span> fruit
+
+<span class="token comment" spellcheck="true"># also we can go through mixed lists too</span>
+<span class="token comment" spellcheck="true"># notice we have to use %r since we don't know what's in it</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> change<span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token string">"I got %r"</span> <span class="token operator">%</span> i
+
+ <span class="token comment" spellcheck="true"># we can also build lists, first start with an empty one</span>
+ elements <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+ <span class="token comment" spellcheck="true"># then use the range function to do 0 to 5 counts</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token string">"Adding %d to the list."</span> <span class="token operator">%</span> i
+    elements<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+
+ <span class="token comment" spellcheck="true"># now we can print them out too</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> elements<span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token string">"Element was: %d"</span> <span class="token operator">%</span> i
+</code></pre>
+<h2 id="你应该看到的结果"><a href="#你应该看到的结果" class="headerlink" title="你应该看到的结果"></a>你应该看到的结果</h2><p>$ python ex32.py<br>This is count 1<br>This is count 2<br>This is count 3<br>This is count 4<br>This is count 5<br>A fruit of type: apples<br>A fruit of type: oranges<br>A fruit of type: pears<br>A fruit of type: apricots<br>I got 1<br>I got ‘pennies’<br>I got 2<br>I got ‘dimes’<br>I got 3<br>I got ‘quarters’<br>Adding 0 to the list.<br>Adding 1 to the list.<br>Adding 2 to the list.<br>Adding 3 to the list.<br>Adding 4 to the list.<br>Adding 5 to the list.<br>Element was: 0<br>Element was: 1<br>Element was: 2<br>Element was: 3<br>Element was: 4<br>Element was: 5</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>1、为什么 for i in range(1, 3): 只循环 2 次而非 3 次?<br>range()函数会从第一个数到最后一个,但不包含最后一个数字。所以它在 2的时候就停止了,而不会数到 3。这种含首不含尾的方式是循环中及其常见的一种用法。<br>2、elements.append() 是什么功能?<br>它的功能是在列表的尾部追加元素。打开 Python 命令行,创建几个列表试验一下。以后每次碰到自己不明白的东西,你都可以在 Python 的交互式命令行中实验一下。</p>
 
     </div>
     <h2 class="post-nav">
       
       <a href="/2017/11/07/python-code-13/" class="prev">上一篇：课13 条件判断 | Python</a>
       
-      <a href="/2017/11/07/python-code-15/" class="next">下一篇：课15</a>
+      <a href="/2017/11/07/python-code-15/" class="next">下一篇：课15 地图与游戏 | python</a>
 
     </h2>
 
