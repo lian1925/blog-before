@@ -46,13 +46,49 @@
       <div class="share-button"></div>
     </div>
     <div class="page">
-      
+      <p>学习完布尔表达式之后，接下来我们将会学习条件判断，控制我们的代码回路。你将会看到，将“if 语句”和“布尔表达式”结合起来可以让程序作出一些智能化的事情。<br><a id="more"></a></p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p>if<br>elif<br>else</p>
+<h2 id="代码练习"><a href="#代码练习" class="headerlink" title="代码练习"></a>代码练习</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">print</span> <span class="token string">"You enter a dark room with two doors.  Do you go through door #1 or door #2?"</span>
+door <span class="token operator">=</span> raw_input<span class="token punctuation">(</span><span class="token string">"> "</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> door <span class="token operator">==</span> <span class="token string">"1"</span><span class="token punctuation">:</span>
+   <span class="token keyword">print</span> <span class="token string">"There's a giant bear here eating a cheese cake.  What do you do?"</span>
+   <span class="token keyword">print</span> <span class="token string">"1. Take the cake."</span>
+   <span class="token keyword">print</span> <span class="token string">"2. Scream at the bear."</span>
+   bear <span class="token operator">=</span> raw_input<span class="token punctuation">(</span><span class="token string">"> "</span><span class="token punctuation">)</span>
+   <span class="token keyword">if</span> bear <span class="token operator">==</span> <span class="token string">"1"</span><span class="token punctuation">:</span>
+       <span class="token keyword">print</span> <span class="token string">"The bear eats your face off.  Good job!"</span>
+   <span class="token keyword">elif</span> bear <span class="token operator">==</span> <span class="token string">"2"</span><span class="token punctuation">:</span>
+       <span class="token keyword">print</span> <span class="token string">"The bear eats your legs off.  Good job!"</span>
+   <span class="token keyword">else</span><span class="token punctuation">:</span>
+       <span class="token keyword">print</span> <span class="token string">"Well, doing %s is probably better.  Bear runs away."</span> <span class="token operator">%</span> bear
+<span class="token keyword">elif</span> door <span class="token operator">==</span> <span class="token string">"2"</span><span class="token punctuation">:</span>
+
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token string">"You stare into the endless abyss at Cthulhu's retina."</span>
+    <span class="token keyword">print</span> <span class="token string">"1. Blueberries."</span>
+    <span class="token keyword">print</span> <span class="token string">"2. Yellow jacket clothespins."</span>
+    <span class="token keyword">print</span> <span class="token string">"3. Understanding revolvers yelling melodies."</span>
+    insanity <span class="token operator">=</span> raw_input<span class="token punctuation">(</span><span class="token string">"> "</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> insanity <span class="token operator">==</span> <span class="token string">"1"</span> <span class="token operator">or</span> insanity <span class="token operator">==</span> <span class="token string">"2"</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span> <span class="token string">"Your body survives powered by a mind of jello.  Good job!"</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span> <span class="token string">"The insanity rots your eyes into a pool of muck.  Good job!"</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token string">"You stumble around and fall on a knife and die.  Good job!"</span>
+</code></pre>
+<h2 id="你应该看到的结果"><a href="#你应该看到的结果" class="headerlink" title="你应该看到的结果"></a>你应该看到的结果</h2><p>这是一个有趣的小冒险游戏<br>$ python ex31.py<br>You enter a dark room with two doors. Do you go through door #1 or door #2? &gt;1<br>There’s a giant bear here eating a cheese cake. What do you do? 1. Take the cake.</p>
+<ol>
+<li>Scream at the bear.<br><code>&gt;2</code><br>The bear eats your legs off.  Good job!</li>
+</ol>
+<h2 id="加分项"><a href="#加分项" class="headerlink" title="加分项"></a>加分项</h2><p>1、代码量有点多，逐行理解代码，写上注释<br>2、改变玩家做决定的位置</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>1、怎样判断一个数字处于某个值域中?<br>两个办法:经典语法是使用 1 &lt; x &lt; 10,或者用 x in range(1, 10) 也可以。</p>
+
     </div>
     <h2 class="post-nav">
       
       <a href="/2017/11/07/python-code-12/" class="prev">上一篇：课12 逻辑关系 | Python</a>
       
-      <a href="#" class="next">下一篇：无</a>
+      <a href="/2017/11/07/python-code-14/" class="next">下一篇：课14 列表与循环 | Python</a>
 
     </h2>
 

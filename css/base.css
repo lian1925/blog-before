@@ -503,13 +503,13 @@ template {
 
 @media (max-width: 420px) {
   .page pre {
-    margin-left: 0px !important;
+    margin-left: 5px !important;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     background-color: #f5f2f0 !important;
   }
   .page p {
-    margin-left: 0px;
+    margin-left: 5px;
     line-height: 30px;
     font-size: 17px;
   }
