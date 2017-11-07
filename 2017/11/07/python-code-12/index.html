@@ -48,13 +48,48 @@
     <div class="page">
       <p>到此为止你已经学会了读写文件,命令行处理,以及很多 Python 数学运算功能。今天,你将要开始学 习逻辑了。你要学习的不是研究院里的高深逻辑理论,只是程序员每天都用到的让程序跑起来的基础逻辑知识。<br><a id="more"></a></p>
 <h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p>我们先记住以下逻辑符号。<br>and与<br>or或<br>not非<br>!= (not equal) 不等于<br>==(equal)等于<br><code>&gt;=</code>(greater-than-equal)大于等于<br><code>&lt;=</code>(less-than-equal)小于等于<br>True真<br>False假</p>
+<h2 id="布尔表达式练习"><a href="#布尔表达式练习" class="headerlink" title="布尔表达式练习"></a>布尔表达式练习</h2><p>判断每一题的布尔值。</p>
+<ol>
+<li>True and True</li>
+<li>False and True</li>
+<li>1 == 1 and 2 == 1</li>
+<li>“test” == “test”</li>
+<li>1 == 1 or 2 != 1</li>
+<li>True and 1 == 1</li>
+<li>False and 0 != 0</li>
+<li>True or 1 == 1</li>
+<li>“test” == “testing”<br>10.1 != 0 and 2 == 1<br>11.”test” != “testing”<br>12.”test” == 1<br>13.not (True and False)<br>14.not (1 == 1 and 0 != 1)<br>15.not (10 == 1 or 1000 == 1000)<br>16.not (1 != 10 or 3 == 4)<br>17.not (“testing” == “testing” and “Zed” == “Cool Guy”)<br>18.1 == 1 and not (“testing” == 1 or 1 == 0)<br>19.”chunky” == “bacon” and not (3 == 4 or 3 == 3)<br>20.3 == 3 and not (“testing” == “testing” or “Python” == “Fun”)</li>
+</ol>
+<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><p>所有的布尔逻辑表达式都可以用下面的简单流程得到结果:</p>
+<ol>
+<li>找到相等判断的部分 (== or !=),将其改写为其最终值 (True 或 False)。 2. 找到括号里的 and/or,先算出它们的值。</li>
+<li>找到每一个 not,算出他们反过来的值。</li>
+<li>找到剩下的 and/or,解出它们的值。</li>
+<li>等你都做完后,剩下的结果应该就是 True 或者 False 了。</li>
+</ol>
+<p>示例：<br>下面我们以 #20 逻辑表达式演示一下:<br>3 != 4 and not (“testing” != “test” or “Python” == “Python”)<br>接下来你将看到这个复杂表达式是如何逐级解为一个单独结果的:</p>
+<ol>
+<li>解出每一个等值判断:</li>
+<li>3 != 4 为 True: True and not (“testing” != “test” or<pre><code>       &quot;Python&quot; == &quot;Python&quot;)
+</code></pre></li>
+<li>“testing” != “test” 为 True: True and not (True or<pre><code>       &quot;Python&quot; == &quot;Python&quot;)
+</code></pre></li>
+<li>“Python” == “Python”: True and not (True or True)</li>
+<li>找到括号中的每一个 and/or :</li>
+<li>(True or True) 为 True: True and not (True)</li>
+<li>找到每一个 not 并将其逆转:</li>
+<li>not (True) 为 False: True and False</li>
+<li>找到剩下的 and/or,解出它们的值:</li>
+<li>True and False 为 False<br>这样我们就解出了它最终的值为 False.</li>
+</ol>
+<h2 id="加分项"><a href="#加分项" class="headerlink" title="加分项"></a>加分项</h2><p>1、通过python 测试上面习题的结果，与自己推断的答案进行比较</p>
 
     </div>
     <h2 class="post-nav">
       
       <a href="/2017/11/07/python-code-11/" class="prev">上一篇：课11 知识回顾 | Python</a>
       
-      <a href="/2017/11/07/python-code-13/" class="next">下一篇：python-code-13</a>
+      <a href="/2017/11/07/python-code-13/" class="next">下一篇：课13 条件判断 | Python</a>
 
     </h2>
 
