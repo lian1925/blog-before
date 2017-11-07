@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/base.css?v=1.1">
+  <link rel="icon" type="image/png" href="/img/robot.png">
+  <link rel="stylesheet" href="/css/post.css?v=1.1">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_407924_kx6yx3r9q4m6xbt9.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />
+
+  <title>
+    课4 认识变量 | python |
+      小梁哥的个人网站
+  </title>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
+
+<body>
+  <div class="container">
+    <div class="header">
+
+      <a class="home-title" style="cursor:default;" onclick="javascript:void(0);return false;"><span>小梁哥的个人网站
+        <i class="iconfont icon-shuangjiantou-copy"></i>
+      </span></a>
+
+      <a href="/home/">首页</a>
+      <span><i class="iconfont icon-shuangjiantou-copy"></i></span>
+      <a href="/tags/python/">
+        python
+      </a>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <i class="iconfont icon-sousuo"></i>
+      </div>
+    </div>
+    <div class="post">
+      <h1>课4 认识变量 | python</h1>
+      <div class="post-meta">
+        <p>作者： Lian</p>
+        <p>日期：
+          2017年11月07日 11:11
+        </p>
+      </div>
+      <div class="share-button"></div>
+    </div>
+    <div class="page">
+      <p>在编程的世界里，变量是用来指代某个东西的名字。程序员的记性都不怎么好，变量名可以帮助他们更容易记住程序的内容。<br>如果他们在编写程序时忘记取好变量名，下次阅读之前的代码时他们将会很头痛。<br><a id="more"></a></p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p>这堂课，我们还将学习格式化字符串的技巧(format string)<br><code>%d</code> 引用数字变量<br><code>%s</code> 引用字符串变量<br><code>%r</code> 引用调试(原始)变量</p>
+<h2 id="代码练习"><a href="#代码练习" class="headerlink" title="代码练习"></a>代码练习</h2><pre class=" language-python"><code class="language-python">my_name <span class="token operator">=</span> <span class="token string">'Zed A. Shaw'</span>
+my_age <span class="token operator">=</span> <span class="token number">35</span> <span class="token comment" spellcheck="true"># not a lie my_height = 74 # inches</span>
+my_weight <span class="token operator">=</span> <span class="token number">180</span> <span class="token comment" spellcheck="true"># lbs</span>
+my_eyes <span class="token operator">=</span> <span class="token string">'Blue'</span>
+my_teeth <span class="token operator">=</span> <span class="token string">'White'</span>
+my_hair <span class="token operator">=</span> <span class="token string">'Brown'</span>
+<span class="token keyword">print</span> <span class="token string">"Let's talk about %s."</span> <span class="token operator">%</span> my_name
+<span class="token keyword">print</span> <span class="token string">"He's %d inches tall."</span> <span class="token operator">%</span> my_height
+<span class="token keyword">print</span> <span class="token string">"He's %d pounds heavy."</span> <span class="token operator">%</span> my_weight
+<span class="token keyword">print</span> <span class="token string">"Actually that's not too heavy."</span>
+<span class="token keyword">print</span> <span class="token string">"He's got %s eyes and %s hair."</span> <span class="token operator">%</span> <span class="token punctuation">(</span>my_eyes<span class="token punctuation">,</span> my_hair<span class="token punctuation">)</span>
+<span class="token keyword">print</span> <span class="token string">"His teeth are usually %s depending on the coffee."</span> <span class="token operator">%</span> my_teeth
+<span class="token comment" spellcheck="true"># this line is tricky, try to get it exactly right</span>
+<span class="token keyword">print</span> <span class="token string">"If I add %d, %d, and %d I get %d."</span> <span class="token operator">%</span> <span class="token punctuation">(</span>my_age<span class="token punctuation">,</span> my_height<span class="token punctuation">,</span> my_weight<span class="token punctuation">,</span> my_age <span class="token operator">+</span> my_height <span class="token operator">+</span> my_weight<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="你应该看到的结果"><a href="#你应该看到的结果" class="headerlink" title="你应该看到的结果"></a>你应该看到的结果</h2><p>$ python ex5.py<br>Let’s talk about Zed A. Shaw.<br>He’s 74 inches tall.<br>He’s 180 pounds heavy.<br>Actually that’s not too heavy.<br>He’s got Blue eyes and Brown hair.<br>His teeth are usually White depending on the coffee.<br>If I add 35, 74, and 180 I get 289.<br>$</p>
+<h2 id="加分项"><a href="#加分项" class="headerlink" title="加分项"></a>加分项</h2><p>1、试着修改变量的名字<br>2、尝试使用更多的格式化字符，如<code>%s</code>和<code>%r</code></p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>1、%s %d 这些符号是什么意思？<br>在编程里，这叫格式化字符串，前半句格式好的字符串加%号，后半句放变量名。如同你去逛商店时，说我要买牛奶，鸡蛋，面包-》我要买？，？，？， (牛奶，鸡蛋，面包)。<br>这就是程序员的语法，I will buy %s, %s, %s,(milk,egg,bread)</p>
+
+    </div>
+    <h2 class="post-nav">
+      
+      <a href="/2017/11/07/python-code-3/" class="prev">上一篇：课3 数字运算 | Python</a>
+      
+      <a href="/2017/11/07/python-code-5/" class="next">下一篇：课5 转义字符 | Python</a>
+
+    </h2>
+
+    <div class="footer">
+      Copyright @ <a href="/">lian</a> | 2009-2017
+    </div>
+  </div>
+
+  <script src="/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+  <script src="/js/post.js"></script>
+
+
+</body>
+
+</html>
+

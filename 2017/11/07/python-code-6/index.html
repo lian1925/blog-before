@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/base.css?v=1.1">
+  <link rel="icon" type="image/png" href="/img/robot.png">
+  <link rel="stylesheet" href="/css/post.css?v=1.1">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_407924_kx6yx3r9q4m6xbt9.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />
+
+  <title>
+    课6 提问的程序 | Python |
+      小梁哥的个人网站
+  </title>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
+
+<body>
+  <div class="container">
+    <div class="header">
+
+      <a class="home-title" style="cursor:default;" onclick="javascript:void(0);return false;"><span>小梁哥的个人网站
+        <i class="iconfont icon-shuangjiantou-copy"></i>
+      </span></a>
+
+      <a href="/home/">首页</a>
+      <span><i class="iconfont icon-shuangjiantou-copy"></i></span>
+      <a href="/tags/python/">
+        python
+      </a>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <i class="iconfont icon-sousuo"></i>
+      </div>
+    </div>
+    <div class="post">
+      <h1>课6 提问的程序 | Python</h1>
+      <div class="post-meta">
+        <p>作者： Lian</p>
+        <p>日期：
+          2017年11月07日 13:11
+        </p>
+      </div>
+      <div class="share-button"></div>
+    </div>
+    <div class="page">
+      <p>前面的学习只是让你写一些简单的程序，简单的东西难免无聊，现在我们增加一点挑战性。为我们的程序添加提问，输入信息，进行交互的功能。<br><a id="more"></a><br>一般软件做的事情主要是下面3条：<br>1、接收用户的输入<br>2、改变输入<br>3、输出改变后的输入<br>接下来，我们学习如何添加输入功能。</p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p>本节将会学习Python接收输入的命令,先记住以下命令，我们将在接下的代码练习中学习它们的使用。<br>raw_input()<br>raw_input(‘something tip’)</p>
+<h2 id="代码练习"><a href="#代码练习" class="headerlink" title="代码练习"></a>代码练习</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">print</span> <span class="token string">"How old are you?"</span><span class="token punctuation">,</span>
+age <span class="token operator">=</span> raw_input<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> <span class="token string">"How tall are you?"</span><span class="token punctuation">,</span>
+height <span class="token operator">=</span> raw_input<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> <span class="token string">"How much do you weigh?"</span><span class="token punctuation">,</span>
+weight <span class="token operator">=</span> raw_input<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span> <span class="token string">"So, you're %r old, %r tall and %r heavy."</span> <span class="token operator">%</span> <span class="token punctuation">(</span>age<span class="token punctuation">,</span>height<span class="token punctuation">,</span>weight<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="你应该看到的结果"><a href="#你应该看到的结果" class="headerlink" title="你应该看到的结果"></a>你应该看到的结果</h2><p>$ python ex11.py<br>How old are you? 35<br>How tall are you? 6’2”<br>How much do you weigh? 180lbs<br>So, you’re ‘35’ old, ‘6\’2”‘ tall and ‘180lbs’ heavy.<br>$</p>
+<h2 id="加分项"><a href="#加分项" class="headerlink" title="加分项"></a>加分项</h2><p>1、尝试在raw_input()命令中，加入提示，如raw_input(“How old are you?”)，改写上面的输入部分代码。</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>1、注意到我在每行 print 后面加了个逗号(comma) , 了吧?这样的话 print 就不会输出新行符而结束 这一行跑到下一行去了。</p>
+
+    </div>
+    <h2 class="post-nav">
+      
+      <a href="/2017/11/07/python-code-5/" class="prev">上一篇：课5 转义字符 | Python</a>
+      
+      <a href="/2017/11/07/python-code-7/" class="next">下一篇：课7 参数传递 | Python</a>
+
+    </h2>
+
+    <div class="footer">
+      Copyright @ <a href="/">lian</a> | 2009-2017
+    </div>
+  </div>
+
+  <script src="/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+  <script src="/js/post.js"></script>
+
+
+</body>
+
+</html>
+

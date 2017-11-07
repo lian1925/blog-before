@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/base.css?v=1.1">
+  <link rel="icon" type="image/png" href="/img/robot.png">
+  <link rel="stylesheet" href="/css/post.css?v=1.1">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_407924_kx6yx3r9q4m6xbt9.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />
+
+  <title>
+    课9 读写文件 | Python |
+      小梁哥的个人网站
+  </title>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
+
+<body>
+  <div class="container">
+    <div class="header">
+
+      <a class="home-title" style="cursor:default;" onclick="javascript:void(0);return false;"><span>小梁哥的个人网站
+        <i class="iconfont icon-shuangjiantou-copy"></i>
+      </span></a>
+
+      <a href="/home/">首页</a>
+      <span><i class="iconfont icon-shuangjiantou-copy"></i></span>
+      <a href="/tags/python/">
+        python
+      </a>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <i class="iconfont icon-sousuo"></i>
+      </div>
+    </div>
+    <div class="post">
+      <h1>课9 读写文件 | Python</h1>
+      <div class="post-meta">
+        <p>作者： Lian</p>
+        <p>日期：
+          2017年11月07日 14:11
+        </p>
+      </div>
+      <div class="share-button"></div>
+    </div>
+    <div class="page">
+      <p>本节学习使用Python将内容写入一个文件中。<br><a id="more"></a></p>
+<h2 id="新知识"><a href="#新知识" class="headerlink" title="新知识"></a>新知识</h2><p>close–关闭文件。跟你编辑器的文件-&gt;保存..一个意思。<br>read – 读取文件内容。你可以把结果赋给一个变量。<br>readline–读取文本文件中的一行。<br>truncate–清空文件,请小心使用该命令。<br>write(stuff) – 将 stuff 写入文件。</p>
+<h2 id="代码练习"><a href="#代码练习" class="headerlink" title="代码练习"></a>代码练习</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> sys <span class="token keyword">import</span> argv
+script<span class="token punctuation">,</span> filename <span class="token operator">=</span> argv <span class="token number">4</span>
+<span class="token keyword">print</span> <span class="token string">"We're going to erase %r."</span> <span class="token operator">%</span> filename
+<span class="token keyword">print</span> <span class="token string">"If you don't want that, hit CTRL-C (^C)."</span>
+<span class="token keyword">print</span> <span class="token string">"If you do want that, hit RETURN."</span>
+raw_input<span class="token punctuation">(</span><span class="token string">"?"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span> <span class="token string">"Opening the file..."</span>
+target <span class="token operator">=</span> open<span class="token punctuation">(</span>filename<span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span> <span class="token string">"Truncating the file.  Goodbye!"</span>
+target<span class="token punctuation">.</span>truncate<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span> <span class="token string">"Now I'm going to ask you for three lines."</span>
+
+line1 <span class="token operator">=</span> raw_input<span class="token punctuation">(</span><span class="token string">"line 1: "</span><span class="token punctuation">)</span>
+line2 <span class="token operator">=</span> raw_input<span class="token punctuation">(</span><span class="token string">"line 2: "</span><span class="token punctuation">)</span>
+line3 <span class="token operator">=</span> raw_input<span class="token punctuation">(</span><span class="token string">"line 3: "</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span> <span class="token string">"I'm going to write these to the file."</span>
+
+target<span class="token punctuation">.</span>write<span class="token punctuation">(</span>line1<span class="token punctuation">)</span>
+target<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+target<span class="token punctuation">.</span>write<span class="token punctuation">(</span>line2<span class="token punctuation">)</span>
+target<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+target<span class="token punctuation">.</span>write<span class="token punctuation">(</span>line3<span class="token punctuation">)</span>
+target<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span> <span class="token string">"And finally, we close it."</span>
+target<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="你应该看到的结果"><a href="#你应该看到的结果" class="headerlink" title="你应该看到的结果"></a>你应该看到的结果</h2><p>你将看到两样东西,一样是你新脚本的输出:<br>$ python ex16.py test.txt<br>We’re going to erase ‘test.txt’.<br>If you don’t want that, hit CTRL-C (^C).<br>If you do want that, hit RETURN.<br>?<br>Opening the file…<br>Truncating the file.  Goodbye!<br>Now I’m going to ask you for three lines.<br>line 1: To all the people out there.<br>line 2: I say I don’t like my hair.<br>line 3: I need to shave it off.<br>I’m going to write these to the file.<br>And finally, we close it.<br>$<br>接下来打开你新建的文件(我的是 test.txt )检查一下里边的内容,怎么样,不错吧?</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>1、找出为什么我们需要给 open 多赋予一个 ‘w’ 参数。<br>提示: open 对于文件的写入操作态度是安全第一,所以你只有特别指定以后,它才会进行写入操作。<br>2、还有哪些修饰符可以用来控制文件访问?<br>最重要的是 + 修饰符,写法就是 ‘w+’, ‘r+’, ‘a+’ ——这样的话文件将以同时读写的方式打开,而对于文件位置的使用也有些不同。</p>
+
+    </div>
+    <h2 class="post-nav">
+      
+      <a href="/2017/11/07/python-code-8/" class="prev">上一篇：课8 读取文件 | Python</a>
+      
+      <a href="/2017/11/07/python-code-10/" class="next">下一篇：课10 认识函数 | Python</a>
+
+    </h2>
+
+    <div class="footer">
+      Copyright @ <a href="/">lian</a> | 2009-2017
+    </div>
+  </div>
+
+  <script src="/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+  <script src="/js/post.js"></script>
+
+
+</body>
+
+</html>
+

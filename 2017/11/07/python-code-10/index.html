@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/base.css?v=1.1">
+  <link rel="icon" type="image/png" href="/img/robot.png">
+  <link rel="stylesheet" href="/css/post.css?v=1.1">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_407924_kx6yx3r9q4m6xbt9.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />
+
+  <title>
+    课10 认识函数 | Python |
+      小梁哥的个人网站
+  </title>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
+
+<body>
+  <div class="container">
+    <div class="header">
+
+      <a class="home-title" style="cursor:default;" onclick="javascript:void(0);return false;"><span>小梁哥的个人网站
+        <i class="iconfont icon-shuangjiantou-copy"></i>
+      </span></a>
+
+      <a href="/home/">首页</a>
+      <span><i class="iconfont icon-shuangjiantou-copy"></i></span>
+      <a href="/tags/python/">
+        python
+      </a>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <i class="iconfont icon-sousuo"></i>
+      </div>
+    </div>
+    <div class="post">
+      <h1>课10 认识函数 | Python</h1>
+      <div class="post-meta">
+        <p>作者： Lian</p>
+        <p>日期：
+          2017年11月07日 14:11
+        </p>
+      </div>
+      <div class="share-button"></div>
+    </div>
+    <div class="page">
+      <p>在编程中，函数是非常重要的概念。程序员都喜欢函数，因为函数可以用来给代码块命名，方便代码复用。<br><a id="more"></a><br>函数可以做三件事：<br>1、它们给代码片段命名，就像变量给数字和字符串命名一样；<br>2、它们可以接收参数，就像你的脚本可以接收参数一样；<br>3、它们可以返回参数。</p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p>函数定义：<br>1、定义以 def 开始<br>2、接着是函数名<br>3、接着是括号，括号内包含参数<br>4、接着是冒号：<br>5、下一行的函数体，使用4个字符的缩进<br>6、函数结束位置，取消缩进</p>
+<p>函数调用<br>1、使用函数名称<br>2、接着是括号，括号内包含参数，多个参数使用逗号隔开</p>
+<h2 id="代码练习"><a href="#代码练习" class="headerlink" title="代码练习"></a>代码练习</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token string">"ADDING %d + %d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b
+<span class="token keyword">def</span> <span class="token function">subtract</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token string">"SUBTRACTING %d - %d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> a <span class="token operator">-</span> b
+<span class="token keyword">def</span> <span class="token function">multiply</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token string">"MULTIPLYING %d * %d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> a <span class="token operator">*</span> b
+<span class="token keyword">def</span> <span class="token function">divide</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token string">"DIVIDING %d / %d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+    <span class="token keyword">print</span> <span class="token string">"Let's do some math with just functions!"</span>
+    <span class="token keyword">return</span> a <span class="token operator">/</span> b
+age <span class="token operator">=</span> add<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+height <span class="token operator">=</span> subtract<span class="token punctuation">(</span><span class="token number">78</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+weight <span class="token operator">=</span> multiply<span class="token punctuation">(</span><span class="token number">90</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+iq <span class="token operator">=</span> divide<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span> <span class="token string">"Age: %d, Height: %d, Weight: %d, IQ: %d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>age<span class="token punctuation">,</span> height<span class="token punctuation">,</span> weight<span class="token punctuation">,</span> iq<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># A puzzle for the extra credit, type it in anyway.</span>
+<span class="token keyword">print</span> <span class="token string">"Here is a puzzle."</span>
+
+what <span class="token operator">=</span> add<span class="token punctuation">(</span>age<span class="token punctuation">,</span> subtract<span class="token punctuation">(</span>height<span class="token punctuation">,</span> multiply<span class="token punctuation">(</span>weight<span class="token punctuation">,</span> divide<span class="token punctuation">(</span>iq<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span> <span class="token string">"That becomes: "</span><span class="token punctuation">,</span> what<span class="token punctuation">,</span> <span class="token string">"Can you do it by hand?"</span>
+</code></pre>
+<h2 id="你应该看到的效果"><a href="#你应该看到的效果" class="headerlink" title="你应该看到的效果"></a>你应该看到的效果</h2><p>$ python ex21.py<br>Let’s do some math with just functions!<br>ADDING 30 + 5<br>SUBTRACTING 78 - 4<br>MULTIPLYING 90 <em> 2<br>DIVIDING 100 / 2<br>Age: 35, Height: 74, Weight: 180, IQ: 50<br>Here is a puzzle.<br>DIVIDING 50 / 2<br>MULTIPLYING 180 </em> 25<br>SUBTRACTING 74 - 4500<br>ADDING 35 + -4426<br>That becomes:  -4391 Can you do it by hand?<br>$</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>1、为什么 Python 会把函数或公式倒着打印出来?<br>其实不是倒着打印,而是自内而外打印。如果你把函数内容逐句看下去,你会发现这里的规律。试 着搞清楚为什么说它是“自内而外”而不是“自下而上”。</p>
+
+    </div>
+    <h2 class="post-nav">
+      
+      <a href="/2017/11/07/python-code-9/" class="prev">上一篇：课9 读写文件 | Python</a>
+      
+      <a href="/2017/11/07/python-code-11/" class="next">下一篇：课11 知识回顾 | Python</a>
+
+    </h2>
+
+    <div class="footer">
+      Copyright @ <a href="/">lian</a> | 2009-2017
+    </div>
+  </div>
+
+  <script src="/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+  <script src="/js/post.js"></script>
+
+
+</body>
+
+</html>
+

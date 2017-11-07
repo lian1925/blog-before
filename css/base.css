@@ -500,3 +500,15 @@ template {
 [hidden] {
   display: none;
 }
+
+@media (max-width: 380px) {
+  .page pre {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #f5f2f0 !important;
+  }
+  .page p {
+    line-height: 30px;
+    font-size: 17px;
+  }
+}
