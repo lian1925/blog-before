@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/base.css?v=1.2">
+  <link rel="icon" type="image/png" href="/img/robot.png">
+  <link rel="stylesheet" href="/css/post.css?v=1.2">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_407924_kx6yx3r9q4m6xbt9.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />
+
+  <title>
+    课5 安装MySQL | Node.js |
+      小梁哥的个人网站
+  </title>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
+
+<body>
+  <div class="container">
+    <div class="header">
+
+      <a class="home-title" style="cursor:default;" onclick="javascript:void(0);return false;"><span>小梁哥的个人网站
+        <i class="iconfont icon-shuangjiantou-copy"></i>
+      </span></a>
+
+      <a href="/home/">首页</a>
+      <span><i class="iconfont icon-shuangjiantou-copy"></i></span>
+      <a href="/tags/Node-js/">
+        Node.js
+      </a>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <i class="iconfont icon-sousuo"></i>
+      </div>
+    </div>
+    <div class="post">
+      <h1>课5 安装MySQL | Node.js</h1>
+      <div class="post-meta">
+        <p>作者： Lian</p>
+        <p>日期：
+          2017年11月08日 17:11
+        </p>
+      </div>
+      <div class="share-button"></div>
+    </div>
+    <div class="page">
+      <p>本节将会学习如何安装MySQL数据库。<br><a id="more"></a></p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>如果你的系统是CentOS,则安装方法如下：<br>1、获取MySQL资源</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">wget</span> http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+<span class="token function">sudo</span> rpm -ivh mysql-community-release-el7-5.noarch.rpm
+yum update
+</code></pre>
+<p>2、安装</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> yum <span class="token function">install</span> mysql-server
+<span class="token function">sudo</span> systemctl start mysqld
+</code></pre>
+<p>3、登录数据库</p>
+<pre class=" language-bash"><code class="language-bash">mysql -u root -p
+</code></pre>
+<p>4、退出数据库</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token keyword">exit</span>
+</code></pre>
+<p>如果你的系统是Ubuntu,则安装方法如下：<br>1、更新apt-get包管理器<br>sudo apt-get update<br>2、安装mysql<br>sudo apt-get install mysql-server-5.5<br>3、配置mysql<br>sudo mysql_secure_installation<br>4、查看mysql 版本<br>mysql –version<br>5、查看mysql当前状态<br>service mysql status<br>6、运行mysql<br>mysql –uroot -p</p>
+
+    </div>
+    <h2 class="post-nav">
+      
+      <a href="/2017/11/08/node-code-4/" class="prev">上一篇：课4 express 入门 | Node.js</a>
+      
+      <a href="/2017/11/08/node-code-6/" class="next">下一篇：课6 Express与MySQL | Node.js</a>
+
+    </h2>
+
+    <div class="footer">
+      Copyright @ <a href="/">lian</a> | 2009-2017
+    </div>
+  </div>
+
+  <script src="/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+  <script src="/js/post.js"></script>
+
+
+</body>
+
+</html>
+

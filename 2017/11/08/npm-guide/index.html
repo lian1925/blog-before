@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/base.css?v=1.2">
+  <link rel="icon" type="image/png" href="/img/robot.png">
+  <link rel="stylesheet" href="/css/post.css?v=1.2">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_407924_kx6yx3r9q4m6xbt9.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />
+
+  <title>
+    课2 npm入门 | Node.js |
+      小梁哥的个人网站
+  </title>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
+
+<body>
+  <div class="container">
+    <div class="header">
+
+      <a class="home-title" style="cursor:default;" onclick="javascript:void(0);return false;"><span>小梁哥的个人网站
+        <i class="iconfont icon-shuangjiantou-copy"></i>
+      </span></a>
+
+      <a href="/home/">首页</a>
+      <span><i class="iconfont icon-shuangjiantou-copy"></i></span>
+      <a href="/tags/Node-js/">
+        Node.js
+      </a>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <i class="iconfont icon-sousuo"></i>
+      </div>
+    </div>
+    <div class="post">
+      <h1>课2 npm入门 | Node.js</h1>
+      <div class="post-meta">
+        <p>作者： Lian</p>
+        <p>日期：
+          2017年11月08日 16:11
+        </p>
+      </div>
+      <div class="share-button"></div>
+    </div>
+    <div class="page">
+      <h2 id="npm-是什么？"><a href="#npm-是什么？" class="headerlink" title="npm 是什么？"></a>npm 是什么？</h2><p>npm（node package manager），是nodejs开发环境下，官方默认的javascript包管理器。<br><a id="more"></a><br>当程序员在谈论npm时，他们在谈论什么？<br>1、npm网站，这是一个巨大的数据库，里面存放着非常多的javascript程序包。这些程序包是由世界上各地的程序员开发共享的。<br><img src="/img_npm/npm_source.png" alt=""><br>2、npm客户端。<br><img src="/img_npm/npm_client.png" alt=""><br>一方面，每位程序员可以通过该客户端下载别人的代码，应用到自己的项目中。这是编程界非常棒的理念，集合世界各地牛人的智慧，实现不可思议的项目。<br>另一方面，程序员可以通过客户端，分享自己的代码。</p>
+<p>所以，为什么我们程序员会如此喜欢npm ?<br>1、程序员可以更加友好地修改和升级自己的代码，规范和管理代码的版本<br>2、程序员可以更加方便地在自己的项目（project）中，使用世界各地的程序员的代码<br>3、程序员可以和全世界的开发者，自由分享自己心仪的代码。</p>
+<h2 id="npm-如何安装？"><a href="#npm-如何安装？" class="headerlink" title="npm 如何安装？"></a>npm 如何安装？</h2><p>注意：一般情况下，我们不会单独安装npm。由于npm是nodejs的官方默认包管理器，故我们可以通过安装nodejs，来获取npm。</p>
+<p>如果你使用的是windows 或 Mac系统，最简单的安装方式是：<br>进入 <a href="https://nodejs.org/en/download/" target="_blank" rel="external">nodejs官网</a><br>选择合适的安装包，下载<br>点击安装包，进行默认安装</p>
+<p>安装完成，可以在命令行输入以下指令，检测安装是否成功。</p>
+<pre class=" language-bash"><code class="language-bash">node -v
+<span class="token function">npm</span> -v
+</code></pre>
+<p>如果你使用的是Debian 或 Ubuntu 系统，安装方法如下：</p>
+<pre class=" language-bash"><code class="language-bash">curl -sL https://deb.nodesource.com/setup_6.x <span class="token operator">|</span> <span class="token function">sudo</span> -E <span class="token function">bash</span> -
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> -y nodejs
+</code></pre>
+<p>如果你使用的是CentOS系统，安装方法如下：</p>
+<pre class=" language-bash"><code class="language-bash">curl --silent --location https://rpm.nodesource.com/setup_6.x <span class="token operator">|</span> <span class="token function">bash</span> -
+yum -y <span class="token function">install</span> nodejs
+</code></pre>
+<h3 id="npm-如何更新"><a href="#npm-如何更新" class="headerlink" title="npm 如何更新"></a>npm 如何更新</h3><p>npm的更新速度远远快于nodejs的更新，故为了保证我们电脑的npm为最新版本，我们需要手动进行更新。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> npm@latest -g
+</code></pre>
+<h2 id="npm-如何安装依赖-package-？"><a href="#npm-如何安装依赖-package-？" class="headerlink" title="npm 如何安装依赖(package)？"></a>npm 如何安装依赖(package)？</h2><p>所谓安装依赖，其实是指下载并使用别人写好并发布在npm的代码。<br>npm提供了两种安装依赖的方式：局部式与全局式。<br>这两种方式有何区别呢？</p>
+<h3 id="局部式"><a href="#局部式" class="headerlink" title="局部式"></a>局部式</h3><p>局部式安装的依赖，只对当前的项目（当前路径）有效，这是我们开发过程中最常用的方式。<br>安装命令：<code>npm install &lt;package_name&gt;</code><br>举例：如果我们需要安装lodash</p>
+<pre class=" language-js"><code class="language-js">npm install lodash
+</code></pre>
+<p>指令执行完毕，则在当前路径上将会出现名为node_modules的文件夹，其中存放着刚刚安装的依赖文件（如 lodash）。</p>
+<p>下一步，如何使用刚刚安装的依赖？<br>1、在当前目录下，新建一个命名为index.js的文件<br>2、打开index.js文件，输入如下代码：</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// index.js</span>
+<span class="token keyword">var</span> lodash <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'lodash'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> output <span class="token operator">=</span> lodash<span class="token punctuation">.</span><span class="token function">without</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>output<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>3、在命令行中运行</p>
+<pre class=" language-js"><code class="language-js">node index<span class="token punctuation">.</span>js
+</code></pre>
+<p>即可看到输出结果：[2, 3]</p>
+<h3 id="全局式"><a href="#全局式" class="headerlink" title="全局式"></a>全局式</h3><p>如果你希望可以在所有的项目中，都可以使用该依赖，则可采用全局式安装。<br>安装命令：<code>npm install -g &lt;package&gt;</code></p>
+<p>举例：如果我们需要安装webpack，同时支持在各个项目中使用。</p>
+<pre class=" language-js"><code class="language-js">npm install <span class="token operator">-</span>g webpack
+</code></pre>
+<h2 id="如何创建自己npm-模块（modules）"><a href="#如何创建自己npm-模块（modules）" class="headerlink" title="如何创建自己npm 模块（modules）"></a>如何创建自己npm 模块（modules）</h2><p>接下来，我们来演示一下如何创建自己的npm模块，并发布到npm以提供其他人使用。<br>首先，我们从创建package.js文件开始。<br>1、运行<code>npm init</code>,<br>2、根据提示，输入项目的name和version（必须），其他可选填。<br>3、最后，在当前目录下，生成package.js文件<br>4、当前目录下，创建一个命名为index.js的文件，输入以下代码：</p>
+<pre class=" language-js"><code class="language-js">exports<span class="token punctuation">.</span>printMsg <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"This is a message from the demo package"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>说明：定义一个函数，作为exports对象的一个属性（property），则该函数能够被外部的文件正常使用。</p>
+<p>接下来，我们需要在<a href="https://www.npmjs.com/signup?done=%2F~" target="_blank" rel="external">npm官网</a>注册账户。只有这样，我们才能在npm上发布我们的代码。<br></p>
+<p>注册完成后，在命令行登陆：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">npm</span> login
+</code></pre>
+<p>说明：根据提示输入用户名（username）、密码（password）、邮箱（email），这些信息在注册账户时获取。</p>
+<p>最后，使用如下命令，发布我们的模块</p>
+<pre class=" language-js"><code class="language-js">npm publish
+</code></pre>
+<h2 id="版本约定（version）"><a href="#版本约定（version）" class="headerlink" title="版本约定（version）"></a>版本约定（version）</h2><p>虽说，我们发布自己的npm模块时，版本号可以自由定制。但是，为了让世界各地的程序员更好交流，更易把握npm package间的版本迭代，我们需要一份标准，来规范npm模块发布时版本号的拟定。<br>当项目第一次发布时</p>
+<ul>
+<li>其初次版本默认约定为1.0.0</li>
+</ul>
+<p>接下来，随着代码的更新升级，版本号依以下情况进行改变。</p>
+<ul>
+<li>bug修复，更改版本号的第三个数字，如1.0.0</li>
+<li>添加新特性（feature），更改版本号的第二个数字，如1.1.0</li>
+<li>项目重大升级，更改版本号的第一个数字，如2.0.0</li>
+</ul>
+
+    </div>
+    <h2 class="post-nav">
+      
+      <a href="/2017/11/08/node-code-1/" class="prev">上一篇：课1 第一个程序 | Node.js</a>
+      
+      <a href="/2017/11/08/node-code-3/" class="next">下一篇：课3 异步与文件读取 | Node.js</a>
+
+    </h2>
+
+    <div class="footer">
+      Copyright @ <a href="/">lian</a> | 2009-2017
+    </div>
+  </div>
+
+  <script src="/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+  <script src="/js/post.js"></script>
+
+
+</body>
+
+</html>
+

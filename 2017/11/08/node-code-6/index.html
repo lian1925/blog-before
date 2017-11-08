@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/base.css?v=1.2">
+  <link rel="icon" type="image/png" href="/img/robot.png">
+  <link rel="stylesheet" href="/css/post.css?v=1.2">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_407924_kx6yx3r9q4m6xbt9.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />
+
+  <title>
+    课6 Express与MySQL | Node.js |
+      小梁哥的个人网站
+  </title>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
+
+<body>
+  <div class="container">
+    <div class="header">
+
+      <a class="home-title" style="cursor:default;" onclick="javascript:void(0);return false;"><span>小梁哥的个人网站
+        <i class="iconfont icon-shuangjiantou-copy"></i>
+      </span></a>
+
+      <a href="/home/">首页</a>
+      <span><i class="iconfont icon-shuangjiantou-copy"></i></span>
+      <a href="/tags/Node-js/">
+        Node.js
+      </a>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <i class="iconfont icon-sousuo"></i>
+      </div>
+    </div>
+    <div class="post">
+      <h1>课6 Express与MySQL | Node.js</h1>
+      <div class="post-meta">
+        <p>作者： Lian</p>
+        <p>日期：
+          2017年11月08日 17:11
+        </p>
+      </div>
+      <div class="share-button"></div>
+    </div>
+    <div class="page">
+      <p>本节将学习怎么使用Express对MySQL进行数据的增删改查操作。<br><a id="more"></a></p>
+<h2 id="代码练习"><a href="#代码练习" class="headerlink" title="代码练习"></a>代码练习</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> router <span class="token operator">=</span> express<span class="token punctuation">.</span><span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> co <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'co'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> mysql <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'mysql2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> mysql_info <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// connectionLimit : 500,</span>
+  host     <span class="token punctuation">:</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">,</span>
+  user     <span class="token punctuation">:</span> <span class="token string">'root'</span><span class="token punctuation">,</span>
+  password <span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+  database <span class="token punctuation">:</span> <span class="token string">'test'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">co</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> conn <span class="token operator">=</span> <span class="token keyword">yield</span> mysql<span class="token punctuation">.</span><span class="token function">createConnectionPromise</span><span class="token punctuation">(</span>mysql_info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> query <span class="token operator">=</span> <span class="token string">"SELECT * FROM user"</span> <span class="token punctuation">;</span>
+      <span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token keyword">yield</span> conn<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          result<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span>
+          data<span class="token punctuation">:</span>data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> params <span class="token operator">=</span> req<span class="token punctuation">.</span>body
+    <span class="token function">co</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> conn <span class="token operator">=</span> <span class="token keyword">yield</span> mysql<span class="token punctuation">.</span><span class="token function">createConnectionPromise</span><span class="token punctuation">(</span>mysql_info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">var</span> query <span class="token operator">=</span> <span class="token string">"INSERT INTO goods SET ?"</span><span class="token punctuation">;</span>
+      <span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token keyword">yield</span> conn<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span>params<span class="token punctuation">)</span>
+      res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            result<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span>
+            data<span class="token punctuation">:</span>data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/:id'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> id <span class="token operator">=</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+    <span class="token function">co</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> conn <span class="token operator">=</span> <span class="token keyword">yield</span> mysql<span class="token punctuation">.</span><span class="token function">createConnectionPromise</span><span class="token punctuation">(</span>mysql_info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> post <span class="token operator">=</span> params<span class="token punctuation">;</span>
+    <span class="token keyword">var</span> query <span class="token operator">=</span> <span class="token string">"UPDATE goods SET ?"</span><span class="token operator">+</span><span class="token string">" WHERE id="</span> <span class="token operator">+</span> id <span class="token punctuation">;</span>
+    <span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token keyword">yield</span> conn<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span>post<span class="token punctuation">)</span>
+      res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          result<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span>
+          data<span class="token punctuation">:</span>data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token string">'/:id'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> id <span class="token operator">=</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+    <span class="token function">co</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> conn <span class="token operator">=</span> <span class="token keyword">yield</span> mysql<span class="token punctuation">.</span><span class="token function">createConnectionPromise</span><span class="token punctuation">(</span>mysql_info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> query <span class="token operator">=</span> <span class="token string">"DELETE FROM goods"</span><span class="token operator">+</span><span class="token string">" WHERE id="</span> <span class="token operator">+</span> id <span class="token punctuation">;</span>
+    <span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token keyword">yield</span> conn<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span>
+      res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          result<span class="token punctuation">:</span><span class="token number">0</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> server <span class="token operator">=</span> app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> host <span class="token operator">=</span> server<span class="token punctuation">.</span><span class="token function">address</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>address<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> port <span class="token operator">=</span> server<span class="token punctuation">.</span><span class="token function">address</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>port<span class="token punctuation">;</span>
+
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Example app listening at http://%s:%s'</span><span class="token punctuation">,</span> host<span class="token punctuation">,</span> port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="你应该看到的结果"><a href="#你应该看到的结果" class="headerlink" title="你应该看到的结果"></a>你应该看到的结果</h2><p>To do later</p>
+<h2 id="加分项"><a href="#加分项" class="headerlink" title="加分项"></a>加分项</h2><p>1、逐行阅读代码，尝试在关键的地方加上注释。</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>1、为什么请求返回json数据？<br>因为json数据，简单高效，容易解析，是当今程序员最喜欢的数据交换格式。<br>2、为什么使用co库？<br>co库是nodejs领域鼎鼎大名的TJ大神的代表作，用在数据库操作上，可以实现将异步转同步，提高代码可读性。</p>
+
+    </div>
+    <h2 class="post-nav">
+      
+      <a href="/2017/11/08/node-code-5/" class="prev">上一篇：课5 安装MySQL | Node.js</a>
+      
+      <a href="#" class="next">下一篇：无</a>
+
+    </h2>
+
+    <div class="footer">
+      Copyright @ <a href="/">lian</a> | 2009-2017
+    </div>
+  </div>
+
+  <script src="/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+  <script src="/js/post.js"></script>
+
+
+</body>
+
+</html>
+
