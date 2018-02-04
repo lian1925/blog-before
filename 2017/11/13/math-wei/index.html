@@ -923,19 +923,86 @@ npm run dev
 </code></pre><p>第三步：编写webpack配置文件<br>上一步中直接使用webpack运行脚本webpack [入口文件] [出口文件]，显然对于后期添加webpack插件和不同环境的配置是不行的。</p>
 <p>在项目根目录下创建webpack.config文件夹专门用于存放webpack的配置文件</p>
 <p>为了让配置文件不同的编译环境中能够复用（例如loaders的配置，不管在开发环境还是生产环境肯定都是一样的），在webpack.confg中首先创建一个base.js文件：</p>
-<p>const path = require(‘path’)<br>const root = path.resolve(__dirname, ‘..’) // 项目的根目录绝对路径</p>
-<p>module.exports = {<br>  entry: path.join(root, ‘src/main.js’),  // 入口文件路径<br>  output: {<br>    path: path.join(root, ‘dist’),  // 出口目录<br>    filename: ‘main.js’  // 出口文件名<br>  }<br>}<br>上面这段配置就实现了webpack src/main.js dist/main.js的功能，还可以额外拓展一下，变成：</p>
-<p>const path = require(‘path’)<br>const root = path.resolve(__dirname, ‘..’) // 项目的根目录绝对路径</p>
-<p>module.exports = {<br>  entry: path.join(root, ‘src/main.js’),  // 入口文件路径<br>  output: {<br>    path: path.join(root, ‘dist’),  // 出口目录<br>    filename: ‘main.js’  // 出口文件名<br>  },<br>  resolve: {<br>    alias: { // 配置目录别名<br>      // 在任意目录下require(‘components/example’) 相当于require(‘项目根目录/src/components/example’)<br>      components: path.join(root, ‘src/components’),<br>      views: path.join(root, ‘src/views’),<br>      styles: path.join(root, ‘src/styles’),<br>      store: path.join(root, ‘src/store’)<br>    },<br>    extensions: [‘’, ‘.js’, ‘.vue’], // 引用js和vue文件可以省略后缀名<br>    fallback: [path.join(root, ‘node_modules’)] // 找不到的模块会尝试在这个数组的目录里面再寻找<br>  },<br>  resolveLoader: {<br>    fallback: [path.join(root, ‘node_modules’)] // 找不到的loader模块会尝试在这个数组的目录里面再寻找<br>  },<br>  module: { // 配置loader<br>    loaders: [<br>      {test: /.vue$/, loader: ‘vue’}, // 所有.vue结尾的文件，使用vue-loader<br>      {test: /.js$/, loader: ‘babel’, exclude: /node_modules/} // .js文件使用babel-loader，切记排除node_modules目录<br>    ]<br>  }<br>}<br>根目录下添加.babelrc用于配置babel：</p>
+<pre><code>const path = require(&#39;path&#39;)
+const root = path.resolve(__dirname, &#39;..&#39;) // 项目的根目录绝对路径
+
+module.exports = {
+  entry: path.join(root, &#39;src/main.js&#39;),  // 入口文件路径
+  output: {
+    path: path.join(root, &#39;dist&#39;),  // 出口目录
+    filename: &#39;main.js&#39;  // 出口文件名
+  }
+}
+</code></pre><p>上面这段配置就实现了webpack src/main.js dist/main.js的功能，还可以额外拓展一下，变成：</p>
+<pre><code>const path = require(&#39;path&#39;)
+const root = path.resolve(__dirname, &#39;..&#39;) // 项目的根目录绝对路径
+
+module.exports = {
+  entry: path.join(root, &#39;src/main.js&#39;),  // 入口文件路径
+  output: {
+    path: path.join(root, &#39;dist&#39;),  // 出口目录
+    filename: &#39;main.js&#39;  // 出口文件名
+  },
+  resolve: {
+    alias: { // 配置目录别名
+      // 在任意目录下require(&#39;components/example&#39;) 相当于require(&#39;项目根目录/src/components/example&#39;)
+      components: path.join(root, &#39;src/components&#39;),
+      views: path.join(root, &#39;src/views&#39;),
+      styles: path.join(root, &#39;src/styles&#39;),
+      store: path.join(root, &#39;src/store&#39;)
+    },
+    extensions: [&#39;&#39;, &#39;.js&#39;, &#39;.vue&#39;], // 引用js和vue文件可以省略后缀名
+    fallback: [path.join(root, &#39;node_modules&#39;)] // 找不到的模块会尝试在这个数组的目录里面再寻找
+  },
+  resolveLoader: {
+    fallback: [path.join(root, &#39;node_modules&#39;)] // 找不到的loader模块会尝试在这个数组的目录里面再寻找
+  },
+  module: { // 配置loader
+    loaders: [
+      {test: /\.vue$/, loader: &#39;vue&#39;}, // 所有.vue结尾的文件，使用vue-loader
+      {test: /\.js$/, loader: &#39;babel&#39;, exclude: /node_modules/} // .js文件使用babel-loader，切记排除node_modules目录
+    ]
+  }
+}
+</code></pre><p>根目录下添加.babelrc用于配置babel：</p>
 <p>{<br>  “presets”: [“es2015”]<br>}<br>使用了vue-loader和babel-loader需要安装包：</p>
 <p>npm install –save-dev vue-loader@8 babel-loader babel-core babel-plugin-transform-runtime babel-preset-es2015 css-loader vue-style-loader vue-hot-reload-api@1 vue-html-loader</p>
-<p>在webpack.confg创建dev.js文件：<br>const path = require(‘path’)<br>const webpack = require(‘webpack’)<br>const merge = require(‘webpack-merge’)<br>const baseConfig = require(‘./base’)<br>const root = path.resolve(__dirname, ‘..’)</p>
-<p>module.exports = merge(baseConfig, {})<br>上面的代码仅仅是导出了跟base.js一模一样的配置，下面我们添加更多用于dev（开发环境）的配置。</p>
+<p>在webpack.confg创建dev.js文件：</p>
+<pre><code>const path = require(&#39;path&#39;)
+const webpack = require(&#39;webpack&#39;)
+const merge = require(&#39;webpack-merge&#39;)
+const baseConfig = require(&#39;./base&#39;)
+const root = path.resolve(__dirname, &#39;..&#39;)
+
+module.exports = merge(baseConfig, {})
+</code></pre><p>上面的代码仅仅是导出了跟base.js一模一样的配置，下面我们添加更多用于dev（开发环境）的配置。</p>
 <p>webpack-merge 用于合并两个配置文件，需要安装</p>
 <p>npm install –save-dev webpack-merge</p>
 <p>使用webpack dev server，开启一个小型服务器，不需要再手动打开index.html进行调试了<br>修改配置文件为：</p>
 <p>module.exports = merge(baseConfig, {<br>  devServer: {<br>    historyApiFallback: true, // 404的页面会自动跳转到/页面<br>    inline: true, // 文件改变自动刷新页面<br>    progress: true, // 显示编译进度<br>    colors: true, // 使用颜色输出<br>    port: 3000, // 服务器端口<br>  },<br>  devtool: ‘source-map’ // 用于标记编译后的文件与编译前的文件对应位置，便于调试<br>})<br>添加热替换配置，每次改动文件不会再整个页面都刷新<br>安装webpack-dev-server:npm install –save-dev webpack-dev-server</p>
-<p>module.exports = merge(baseConfig, {<br>  entry: [<br>    ‘webpack/hot/dev-server’, // 热替换处理入口文件<br>    path.join(root, ‘src/index.js’)<br>  ],<br>  devServer: { /<em> 同上 </em>/},<br>  plugins: [<br>    new webpack.HotModuleReplacementPlugin() // 添加热替换插件<br>  ]<br>}<br>使用HtmlWebpackPlugin，实现js入口文件自动注入<br>module.exports = merge(baseConfig, {<br>  entry: [ /<em> 同上 </em>/ ],<br>  devServer: { /<em> 同上 </em>/ },<br>  plugins: [<br>    new webpack.HotModuleReplacementPlugin(),<br>    new HtmlWebpackPlugin({<br>      template: path.join(root, ‘index.html’), // 模板文件<br>      inject: ‘body’ // js的script注入到body底部<br>    })<br>  ]<br>}<br>最后修改后完整的dev.js请查看源码</p>
+<pre><code>module.exports = merge(baseConfig, {
+  entry: [
+    &#39;webpack/hot/dev-server&#39;, // 热替换处理入口文件
+    path.join(root, &#39;src/index.js&#39;)
+  ],
+  devServer: { /* 同上 */},
+  plugins: [
+    new webpack.HotModuleReplacementPlugin() // 添加热替换插件
+  ]
+}
+</code></pre><p>使用HtmlWebpackPlugin，实现js入口文件自动注入</p>
+<pre><code>module.exports = merge(baseConfig, {
+  entry: [ /* 同上 */ ],
+  devServer: { /* 同上 */ },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.join(root, &#39;index.html&#39;), // 模板文件
+      inject: &#39;body&#39; // js的script注入到body底部
+    })
+  ]
+}
+</code></pre><p>最后修改后完整的dev.js请查看源码</p>
 <p>这里的HotModuleReplacementPlugin是webpack内置的插件，不需要安装</p>
 <p>但HtmlWebpackPlugin需要自行安装：</p>
 <p>npm install –save-dev html-webpack-plugin</p>
