@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/base.css?v=1.2">
+  <link rel="icon" type="image/png" href="/img/robot.png">
+  <link rel="stylesheet" href="/css/post.css?v=1.2">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_407924_kx6yx3r9q4m6xbt9.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />
+
+  <title>
+    Webpack | 知识淬炼 |
+      小梁哥的个人网站
+  </title>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
+
+<body>
+  <div class="container">
+    <div class="header">
+
+      <a class="home-title" style="cursor:default;" onclick="javascript:void(0);return false;"><span>小梁哥的个人网站
+        <i class="iconfont icon-shuangjiantou-copy"></i>
+      </span></a>
+
+      <a href="/home/">首页</a>
+      <span><i class="iconfont icon-shuangjiantou-copy"></i></span>
+      <a href="/tags/淬炼/">
+        淬炼
+      </a>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <i class="iconfont icon-sousuo"></i>
+      </div>
+    </div>
+    <div class="post">
+      <h1>Webpack | 知识淬炼</h1>
+      <div class="post-meta">
+        <p>作者： Lian</p>
+        <p>日期：
+          2018年02月05日 10:02
+        </p>
+      </div>
+      <div class="share-button"></div>
+    </div>
+    <div class="page">
+      <h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><p>是一个现代JavaScript应用的静态模块打包器(module bundle)。当webpack处理应用程序时，它会用递归方式构建一个依赖关系图，涵盖应用程序需要的每一个模块，然后将其打包成一个或多个bundle。</p>
+<p>使用webpack，你需要先理解4个核心概念。</p>
+<h2 id="entry-入口"><a href="#entry-入口" class="headerlink" title="entry,入口"></a>entry,入口</h2><p>指示webpack应该使用哪个模块，来作为构建其内部依赖图的开始。接着，webpack将依次找出入口模块依赖的其他模块或库。<br>接下来，我们来看一个entry配置的最简单例子。</p>
+<pre class=" language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  entry<span class="token punctuation">:</span><span class="token string">'./path/to/my/entry/file.js'</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="output，出口"><a href="#output，出口" class="headerlink" title="output，出口"></a>output，出口</h2><p>告诉webpack在哪里输出它创建的bundles,以及如何命名这些文件。</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  entry<span class="token punctuation">:</span><span class="token string">'./path/to/my/entry/files.js'</span><span class="token punctuation">,</span>
+  output<span class="token punctuation">:</span><span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span>path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span><span class="token string">'dist'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span><span class="token string">'my_first_webpack.bundle.js'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>在上面的例子中，我们通过output.path和output.filename，来告诉webpack 生成bundle的名称，以及我们想要生成(emit)到哪里。</p>
+<h2 id="loader-加载器"><a href="#loader-加载器" class="headerlink" title="loader,加载器"></a>loader,加载器</h2><p>wepack自身只理解javascript，如果我们希望处理一些非JavaScript文件，怎么办？<br>对于这个问题，webpack提供了loader机制，它可以将其他类型的文件转化为webpack能够处理的有效模块。<br>在webpack配置中，loader有两个目标。<br>1、使用test属性，识别出与loader相对应的那些文件。<br>2、使用use属性，转换这些文件，添加至依赖图，最终添加到bundle中。</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
+  entry<span class="token punctuation">:</span><span class="token string">''</span><span class="token punctuation">,</span>
+  output<span class="token punctuation">:</span><span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span><span class="token string">''</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span><span class="token string">''</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  module<span class="token punctuation">:</span><span class="token punctuation">{</span>
+    rules<span class="token punctuation">:</span><span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>test<span class="token punctuation">:</span><span class="token regex">/\.txt$/</span><span class="token punctuation">,</span>use<span class="token punctuation">:</span><span class="token string">'raw-loader'</span><span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span><span class="token keyword">export</span> <span class="token operator">=</span> config
+</code></pre>
+<h2 id="plugins-插件"><a href="#plugins-插件" class="headerlink" title="plugins,插件"></a>plugins,插件</h2><p>相比于loader专注于转换模块类型的单一功能，插件用于执行各种特定的任务。它的适用范围：从打包优化和压缩，一直到重新定义环境中的变量。</p>
+<p>使用插件，需要两个步骤：<br>1、使用require()引入，添加到plugins数组中，<br>2、使用new操作符来创建它的一个实例。</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> HtmlWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'html-webpack-plugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 通过 npm 安装</span>
+<span class="token keyword">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 用于访问内置插件</span>
+<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
+  entry<span class="token punctuation">:</span> <span class="token string">'./path/to/my/entry/file.js'</span><span class="token punctuation">,</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'dist'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'my-first-webpack.bundle.js'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span> test<span class="token punctuation">:</span> <span class="token regex">/\.txt$/</span><span class="token punctuation">,</span> use<span class="token punctuation">:</span> <span class="token string">'raw-loader'</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>optimize<span class="token punctuation">.</span>UglifyJsPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>template<span class="token punctuation">:</span> <span class="token string">'./src/index.html'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> config<span class="token punctuation">;</span>
+</code></pre>
+
+    </div>
+    <h2 class="post-nav">
+      
+      <a href="/2018/02/04/online-vuex/" class="prev">上一篇：Vuex | 知识淬炼</a>
+      
+      <a href="#" class="next">下一篇：无</a>
+
+    </h2>
+
+    <div class="footer">
+      Copyright @ <a href="/">lian</a> | 2009-2017
+    </div>
+  </div>
+
+  <script src="/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+  <script src="/js/post.js"></script>
+
+
+</body>
+
+</html>
+
