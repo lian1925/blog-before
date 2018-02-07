@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/base.css?v=1.2">
+  <link rel="icon" type="image/png" href="/img/robot.png">
+  <link rel="stylesheet" href="/css/post.css?v=1.2">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_407924_kx6yx3r9q4m6xbt9.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />
+
+  <title>
+    Html | 知识淬炼 |
+      小梁哥的个人网站
+  </title>
+<link rel="stylesheet" href="/css/prism-ghcolors.css" type="text/css"></head>
+
+<body>
+  <div class="container">
+    <div class="header">
+
+      <a class="home-title" style="cursor:default;" onclick="javascript:void(0);return false;"><span>小梁哥的个人网站
+        <i class="iconfont icon-shuangjiantou-copy"></i>
+      </span></a>
+
+      <a href="/home/">首页</a>
+      <span><i class="iconfont icon-shuangjiantou-copy"></i></span>
+      <a href="/tags/淬炼/">
+        淬炼
+      </a>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <i class="iconfont icon-sousuo"></i>
+      </div>
+    </div>
+    <div class="post">
+      <h1>Html | 知识淬炼</h1>
+      <div class="post-meta">
+        <p>作者： Lian</p>
+        <p>日期：
+          2018年02月05日 11:02
+        </p>
+      </div>
+      <div class="share-button"></div>
+    </div>
+    <div class="page">
+      <h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><p>英文全称 Hypertext Markup Language， 超文本标记语言，用于创建web网页。</p>
+<h2 id="W3C"><a href="#W3C" class="headerlink" title="W3C"></a>W3C</h2><p>英文全称 World Wild Web consortium，一个国际委员会组织。它是专门为定义HTML和XHTML标准而成立的。</p>
+<h2 id="HTML哲学"><a href="#HTML哲学" class="headerlink" title="HTML哲学"></a>HTML哲学</h2><p>我们应该把精力集中在文档的内容上。那些看上去很酷的页面只不过是全景中的一个亮点而已,有内涵的内容才会吸引越来越多的读者。<br>委员会在设计HTML标准之初，达成了这样一个约定：内容高于视觉表现<br>。所以，我们在使用html时，需要按照他的设计方式来使用：表明文档的结构，以便浏览器能够正确显示它们的内容。</p>
+<p>我们来看一下，最简单的HTML文档</p>
+<pre class=" language-HTML"><code class="language-HTML"><!-- 声明文档类型. 很久以前，早期的HTML(大约1991年2月)，文档类型声明类似于链接，规定了HTML页面必须遵从的标准 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>hello,world</title>
+  </head>
+  <body>
+
+  </body>
+</html>
+</code></pre>
+<p>你可以随心所欲将喜欢的任何东西加入HTML代码中，可能有些令人惊奇，但事实却是HTML文档仅仅由3种不同的元素组成：标签，注释，文本。</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>注释，拆分为”注”与”释”两个字，分别代表标注和解释。我们在编程时，往往会在某段代码附近，写上标注，用于解释这段代码的意图，这就是我们的注释。<br>我们来看看html中注释的语法规则：<br>注释以<code>&lt;!--</code>开头，以<code>--&gt;</code>结束，中间的文本则是我们的注释内容。注释的内容不会在浏览器中显示出来，但是我们可以在源代码中查看。</p>
+<p>我们来演示一下</p>
+<pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!-- 此处是我们的网页标题 --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>hello,world<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>和其他编程语言一样，如果没有注释，一个充满标签的原始HTML文档，很快就难以阅读。因此，强烈建议大家在编程时，培养注释的好习惯，保持清晰的编程思路。</p>
+<h2 id="html元素-elements"><a href="#html元素-elements" class="headerlink" title="html元素(elements)"></a>html元素(elements)</h2><p>html文档由元素组合而成。什么是html元素？我们来看个示例</p>
+<pre class=" language-HTML"><code class="language-HTML"><p>My cat is very grumpy</p>
+</code></pre>
+<p>我们的HTML元素有3个组成部分：开始标签，结束标签，内容。<br>1、开始标签：以<code>&lt;</code>开头，以<code>&gt;</code>结束，标签中的第一个单词，是标签的名称，描述它的功能。接下来的其他单词，是标签的属性，用于描述标签的行为。<br>2、结束标签：以<code>&lt;/</code>开头，以<code>&gt;</code>结束。大多数标签是成对存在的，良好的编程习惯，是不能忘了写结束标签。如：省略</p><p>元素的结束标签，就是很多前端程序员容易犯的错误。<br>3、内容：包含在开始标签和结束标签中的内容，很多时候是文本。<br>示例：</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>main<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>My cat <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>嵌套元素<br>你可以把元素放在其他元素之中，我们称之为嵌套。我们一般称嵌套在外面的元素称为父元素，里面的元素称为子元素。注意，子元素的开始标签和结束标签都被包含在父元素里头。<br>我们来看个例子</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>My cat is <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">></span></span>very<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">></span></span> grumpy.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>在这个例子中，p元素嵌套了strong元素，表示对very这个单词进行强调。</p>
+<p>HTML元素有2两种重要的分类：<br>1、块级元素：该元素在页面中以块状方式呈现，即相对于前面的内容，它会另起一行，其后的内容也会被挤到下一行展现。常见的块级元素有：div,p<br>2、内联元素：通常出现在块级元素内部（嵌套），并包裹文档内容的小部分。它一个显著特性就是元素不换行。常见的内联元素有：a，span</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>My cat is <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>very<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span> grumpy.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>HTML结构<br>HTML的整体结构是非常简单清晰的。首先是HTML元素，它包裹了整个完整的网页，故HTML元素又被称为根元素。<br>head元素，网页的头部，主要包含一些网站属性信息，如：标题，字符集，css样式等。<br>body元素，网页的主体，你访问网页时，看到的所有内容，包括文本，图片，音频等内容，都是在主体定义的。</p>
+<p>html-&gt;(head+body)</p>
+<h2 id="head元素"><a href="#head元素" class="headerlink" title="head元素"></a>head元素</h2><p>head元素包含一些页面的元数据，用于定义网页的相关属性。这些内容不会在浏览器中显示。<br>示例：</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>My test page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>接下来，我们来看看head元素常见的子元素。</p>
+<p>1、title元素，用于为网页添加标题。</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token comment" spellcheck="true">&lt;!-- 此处添加标题 --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>My test page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>2、meta元素，用于定义网页属性的元数据。元数据的官方定义有点拗口，描述数据的数据。它含有页面的相关信息，包括样式、脚本及数据，能帮助一些软件 (如搜索引擎， 浏览器等等）更好地运用和渲染页面。<br>常见的开发技巧，把你网站的关键字放在keyword和description元数据中，可以帮助搜索引擎更好找到你的网站。</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>description<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>淘宝网 - 亚洲较大的网上交易平台，提供各类服饰、美容、家居、数码、话费/点卡充值… 数亿优质商品，同时提供担保交易(先收货后付款)等安全交易保障服务，并由商家提供退货承诺、破损补寄等消费者保障服务，让你安心享受网上购物乐趣！<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>keyword<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>淘宝,掏宝,网上购物,C2C,在线交易,交易市场,网上交易,交易市场,网上买,网上卖,购物网站,团购,网上贸易,安全购物,电子商务,放心买,供应,买卖信息,网店,一口价,拍卖,网上开店,网络购物,打折,免费开店,网购,频道,店铺<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+</code></pre>
+<p>3、link元素，用于引入外部的文件。常见的有：引入外部的css文件。</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>my-css-file.css<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</code></pre>
+<p>此外，它还可以帮助你实现网站添加小图标的功能。</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>shortcut icon<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>favicon.ico<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>image/x-icon<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</code></pre>
+<p>4、script元素，用于嵌入JavaScript脚本。</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>my-js-file.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>5、style元素，包含文档的样式信息。</p>
+<h2 id="语义化原则"><a href="#语义化原则" class="headerlink" title="语义化原则"></a>语义化原则</h2><p>语义，又称顾名思义。我们看到什么，就会知道它代表什么。举个例子, 我们知道红色交通灯表示“停止”，绿色交通灯表示”通行“。我们希望生活中事情井井有序，这样我们凭借着以前的经验或常识，就能做出正确的判断。<br>同样的道理，在编程时，我们要遵守语义化原则。我们需要确保使用正确的元素来给予内容正确的意思、作用以及外形。如：使用</p><h1> 元素来定义您的页面上用来表示顶级标题的文本，而不是其他的元素。<p></p>
+<h2 id="body元素"><a href="#body元素" class="headerlink" title="body元素"></a>body元素</h2><p>body元素是网页的主体内容。大部分的网页的主要工作是编辑文本内容，以便浏览器能正确显示。<br>大部分的文本结构由标题和段落组成。 不管是小说、报刊、教科书还是杂志等。</p>
+<p>标题(heading)元素<br>用于描述标题元素，包含六个不同的级别，h1到h6，其中h1级别最高，h6级别最低。</p>
+<p>p元素<br>表示文本的一个段落。该元素是块级元素，通常表现为一整块与相邻文本分离的文本。以前的程序员喜欢省略p元素的结束标签，虽然浏览器不会报错，但这是不好的习惯，这里特别提醒。</p>
+<p>div元素<br>这是开发中使用最多的元素，在语义上不代表任何特定类型的内容。它一般结合class和id属性，对相关元素进行分组，以便更好进行样式处理。</p>
+<p>span元素<br>常用的行内元素，一般与p元素嵌套使用。</p>
+<p>em元素<br>用于需要加粗的文本内容，表示强调。</p>
+<p>strong元素<br>表示文本十分重要，一般用粗体。与em同时表示强调，但strong强调意味更加重。</p>
+<p>pre元素<br>表示预定义格式文本，这些文本通常按照原文件中的编排，以等宽字体的形式展现出来。<br>比如：文本块中有需要行或者垂直对齐的文本,你希望这些内容即使在浏览器窗口大小改变时也不会发生变化，这种情况可以采用pre标签。<br>示例：</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>line<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tag<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token entity" title="&lt;">&amp;lt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>div<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>attr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>id<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>=<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>string<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>"app"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token entity" title="&gt;">&amp;gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>line<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>  {{ message }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>line<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tag<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token entity" title="&lt;">&amp;lt;</span>/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>div<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token entity" title="&gt;">&amp;gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>ul元素<br>ul，英文全称为unordered list，无序列表，表示没有特定顺序的一种列表(如洗衣店列表或者杂货店列表)。它们用 <u1>和 </u1>标签来定义边界，列表数据项item用 <li> 标签来进行标记。<br>示例</li></p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>first item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>second item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>third item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>ol元素<br>ol,英文全称ordered list，有序列表，表示带数字编号的列表。有序列表用<ol>标签来限定边界，格式与无序列表相同。<br>常用属性：<br>1、reversed<br>reverse，中文是翻转，默认情况，列表是顺序排序。不过，如果你需要逆序，可通过配置reversed属性来实现。它是布尔属性。<br>2、start<br>整数属性，规定列表序号的开始值。<br>3、type<br>规定序号类型。<br>‘1’，表示数字编号（默认）<br>‘a’，表示小写字母编号<br>‘A’，表示大写字母编号<br>‘i’，表示小写罗马数字编号<br>‘I’，表示大写罗马数字编号<br>示例：</ol></p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span> <span class="token attr-name">start</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>7<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>first item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>second item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>third item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>form元素<br>表示了文档中的一个区域，这个区域包含有交互控制元件，如文本输入框，单选按键，多选按键，下拉菜单等，用于获取用户的输入数据。<br>常见属性：<br>1、action<br>规定接收和处理表单数据的应用程序的URL。该值有可能被button和input的formation属性覆盖。</p>
+<p>2、enctype<br>浏览器在把数据传给服务器之前，会专门对表单的数据进行编码，这样在传输过程中数据才不会被打乱或破坏。<br>默认格式是application/x-www-form-urlencoded。<br>当传送的表单数据包括文件时，一般采用多部分表单格式 multipart/form-data。<br>当无法访问表单处理服务器，需要将表单数据通过邮件发送时，才会采用text/plain格式。<br>该值有可能会被button和input的formenctype属性覆盖。</p>
+<p>3、accept-charset<br>指定字符集，服务器必须支持该字符集，才能正确解释表单中的数据。<br>可不填，默认值为unknown，意味着表单的字符集与该HTML的字符集相同。</p>
+<p>4、method<br>必填，有两种方法：post get<br>如果采用Post方法，浏览器将会安装下面两步来发送数据。首先，浏览器与服务器建立联系，一旦建立联系成功，浏览器按分段传输的方法将数据发送给服务器。<br>如果采用get方法，首先，浏览器与服务器建立联系，一旦建立联系，浏览器会将所有数据附在表单的url之后，用问号隔开，一次性发送给服务器。</p>
+<p>5、target<br>用来指示在提交表单之后，在哪里显示收到的回复。<br><code>_self</code>: 在当前HTML4或HTML5文档页面重新加载返回值。这个是默认值。<br><code>_blank</code>: 以新的HTML4或HTML5文档窗口加载返回值。</p>
+<pre class=" language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- 一个简单的表单，这个表单会发送一个 GET 请求 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>GET-name<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Name:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>GET-name<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Save<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>fieldset 元素<br>通常用来对表单中的控制元素进行分组(也包括 label 元素)<br>示例：</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>test.php<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fieldset</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>legend</span><span class="token punctuation">></span></span>Title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>legend</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Click me<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fieldset</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>input<br>常用的表单交互控件，用于接收用户的输入数据。可以实现文本输入，多选列表，提交按键等功能。没有结束标签。<br>常见属性如下：<br>1、type,必填，表明控件的类型<br>2、text，文本输入框，默认值。<br>3、checkbox，复选框，必须使用value属性定义此控件被提交的值。<br>4、file，可以让用户选择文件。一般结合accept属性，定义文件类型。<br>5、password，值被隐藏的文本输入框<br>6、radio，单选按键，必须使用value属性定义此按键被提交的值。<br>7、submit，表单提交的按键。</p>
+<p>checked<br>如果该元素的type属性的值为radio或者checkbox,则该布尔属性的存在与否表明了该控件是否是默认选择状态.</p>
+<p>name<br>控件名称，与表单数据一起提交</p>
+<p>required<br>指定该元素为必填项。<br>示例：</p>
+<pre class=" language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- 一个常见的表单,包含了一些input元素 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>getform.php<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>get<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    First name: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>first_name<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span>
+     Last name: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>last_name<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span>
+        E-mail: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>user_email<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Submit<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>textarea<br>用于创建一个多行文本的输入区域。<br>rows和cols属性，分别定义矩形区域的横向与纵向维度。建议大家设置这些属性，因为浏览器通常有个习惯，就是为textarea设置最小的可读区域，且用户无法更改它的大小。</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>textarea</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>textarea<span class="token punctuation">"</span></span> <span class="token attr-name">rows</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span> <span class="token attr-name">cols</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>50<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Write something here<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>textarea</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>select<br>用于构建下拉菜单，菜单内的选项为option元素。<br>name<br>控件名称</p>
+<p>示例：</p>
+<pre class=" language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- The second value will be selected initially --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>select<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>value1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Value 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>value2<span class="token punctuation">"</span></span> <span class="token attr-name">selected</span><span class="token punctuation">></span></span>Value 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>value3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Value 3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span>
+</code></pre>
+<h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><p>文档中大部分不属于标签的字符都会被浏览器显示。但是，有一些字符具有特殊的含义，而不能够直接显示。<br>这类字符有3种：&lt;，&gt;，&amp; ,前两者界定了标签的范围，后者是对特殊字符的引用。<br>特殊字符有两者用法：<br>1、在&amp;和;间加入标准的实体名<br>2、在&amp;和；间加入#和Latin-1标准字符集中的位置编码<br><code>&amp;gt</code> &gt;<br><code>&amp;#62;</code></p>
+<p>水平分割线<br>当浏览器在文档中遇到 <hr> 标签时,它就会断开文本流,并在新的一行中刷一条 贯穿整个窗口的直线。<br>width<br>定义分隔线的长度<br>align<br>定义分隔线的对齐方式<br>color<br>定义分隔线的颜色</p>
+<p>img元素<br>代表文档中的一张图像。<br>常见属性如下：<br>标签是img ,src属性定义图像的URL<br>1、alt<br>规定了描述图像的替换文本。当图像无法显示时，代替图片显示在浏览器的内容。建议每个图像使用该属性，这样当图像无法正常显示，用户还是可以得到一些提示信息。<br>2、width<br>图像的宽度<br>3、height<br>图像的高度<br>4、src<br>图像的URL，这是必填项，用于告诉浏览器在哪里可以找到图像。<br>示例：</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mdn-logo-sm.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>MDN<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</code></pre>
+<p>a元素<br>通常，程序员喜欢称它为锚。用于创建一个链接，直达其他网页，同一网页其他位置的链接。<br>常见属性：<br>1、href<br>表示链接目标的URL。<br>2、target<br>规定在哪里显示链接的资源。<br><code>_self</code>: 在当前HTML4或HTML5文档页面重新加载返回值。这个是默认值。<br><code>_blank</code>: 以新的HTML4或HTML5文档窗口加载返回值。<br>示例：</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://developer.mozilla.org/en-US/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://mdn.mozillademos.org/files/6851/mdn_logo.png<span class="token punctuation">"</span></span>
+       <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>MDN logo<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>URL<br>在互联网上有数以百万甚至数以亿计的文档和资源,这些文档和资源在互联网上的惟一地址,这个地址被称为统一资源定位符( uniform resource locator, URL)。</p>
+<p>我们来看看URL的语法规则：<br>protocol://server_domain_name/pathnαme/filename<br>阅读URL，需要从后往前看。<br>首先是filename，表示文档名称；<br>其次是pathname，表示文件路径（又称目录结构）；<br>然后是server_domain_name,表示服务器的互联网域名；<br>最后是protocol，表示浏览器与服务器的通信协议。</p>
+<p>绝对和相对URL<br>绝对URL是资源的完整地址，包含系统在web上寻找文档和它所在服务器所需的所有信息。<br>相对URL只提供简写的文档地址，系统会自动将其与基本地址base address 合并起来，生成一个完整的文档地址。<br>开发中推荐使用相对URL，想想看，当你需要将项目从一个目录前移到另一个目录，或一个服务器迁移到另一台服务器，使用相对URL则无需改动。使用绝对URL则需要修改所有URL，将是一件多么困难的事情。</p>
+<p>http端口<br>端口是客户端与服务器连接的通信端口号码。服务器处理可以提供web文档服务外，还可以执行其他功能，如：电子邮件，FTP文件读写等，按照服务类型不同，连接到服务器的不同端口。<br>web服务器的默认端口是80，而使用HTTPS的服务器使用端口443.</p>
+</h1>
+    </div>
+    <h2 class="post-nav">
+      
+      <a href="/2018/02/05/online-vue/" class="prev">上一篇：Vue | 知识淬炼</a>
+      
+      <a href="#" class="next">下一篇：无</a>
+
+    </h2>
+
+    <div class="footer">
+      Copyright @ <a href="/">lian</a> | 2009-2017
+    </div>
+  </div>
+
+  <script src="/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+  <script src="/js/post.js"></script>
+
+
+</body>
+
+</html>
+
